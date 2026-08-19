@@ -1,0 +1,17 @@
+## Ignore Visual Studio / VS Code / .NET build artifacts
+bin/
+obj/
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Ignore OS created files
+.DS_Store
+Thumbs.db
+
+## Ignore AppSettings local secrets if any
+appsettings.Local.json
