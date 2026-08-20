@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TechHub PC - Order Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#737686",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1e",
+                        "surface-container": "#edeef0",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e2e4",
+                        "tertiary-container": "#656d84",
+                        "surface-container-high": "#e7e8ea",
+                        "on-tertiary-fixed": "#131b2e",
+                        "tertiary": "#4d556b",
+                        "secondary-fixed-dim": "#ffb690",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#2e3132",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-low": "#f3f4f6",
+                        "primary-container": "#2563eb",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d9dadc",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#783200",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#0053db",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-container": "#fd761a",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-bright": "#f8f9fb",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#341100",
+                        "surface": "#f8f9fb",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-container": "#eef0ff",
+                        "outline-variant": "#c3c6d7",
+                        "on-surface-variant": "#434655",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#5c2400",
+                        "tertiary-fixed": "#dae2fd",
+                        "secondary": "#9d4300",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface-container-highest": "#e1e2e4",
+                        "secondary-fixed": "#ffdbca",
+                        "background": "#f8f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-sm": ["Be Vietnam Pro"],
+                        "headline-xl": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "body-sm": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "label-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #f8f9fb; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-high docked full-width top-0 bg-surface-container-low dark:bg-surface-container-highest shadow-sm z-50">
+<div class="flex flex-col w-full z-50 max-w-container-max mx-auto px-gutter py-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">TechHub PC</span>
+<nav class="hidden md:flex gap-lg">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Hotline</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Store Locations</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Order Tracking</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative w-64 hidden lg:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-sm py-sm rounded-full border border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary outline-none text-body-sm font-body-sm" placeholder="Search..." type="text"/>
+</div>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">compare_arrows</span>
+</button>
+<button class="ml-sm text-body-sm font-body-sm font-semibold text-primary border border-primary px-sm py-xs rounded hover:bg-primary-container hover:text-on-primary-container transition-colors">Login/Register</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-xl md:flex gap-lg">
+<!-- SideNavBar (Contextual: Hiding generic side nav on specific order detail page to focus on canvas, but rendering structural layout if needed for desktop responsiveness. Let's keep it clean as per mandate for task-focused pages, but since it's an order tracking page, it could be part of a user account section. I will suppress standard side nav to focus on the order tracking timeline and details as requested in task.) -->
+<!-- Main Content Canvas -->
+<div class="w-full flex flex-col gap-lg">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md bg-surface-container-lowest p-lg rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-outline-variant/30">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Order #TH-98245</h1>
+<span class="bg-primary-container text-on-primary-container text-label-md font-label-md px-sm py-xs rounded-full">Hoàn thành</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant">Placed on October 24, 2024 at 14:30</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-sm border border-outline rounded-lg text-body-sm font-body-sm font-medium hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+                        Invoice
+                    </button>
+<button class="flex items-center gap-xs px-md py-sm bg-primary text-on-primary rounded-lg text-body-sm font-body-sm font-medium hover:bg-primary-fixed-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+                        Support
+                    </button>
+</div>
+</div>
+<!-- Timeline Tracking -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-outline-variant/30">
+<h2 class="text-headline-sm font-headline-sm mb-lg">Order Status</h2>
+<div class="relative flex flex-col md:flex-row justify-between w-full">
+<!-- Progress Line Background -->
+<div class="absolute left-[15px] top-0 bottom-0 w-0.5 bg-surface-container-high md:top-[15px] md:bottom-auto md:left-0 md:right-0 md:h-0.5 md:w-full z-0"></div>
+<!-- Active Progress Line -->
+<div class="absolute left-[15px] top-0 h-full w-0.5 bg-primary md:top-[15px] md:h-0.5 md:w-full z-0 transition-all duration-500 ease-in-out"></div>
+<!-- Nodes -->
+<!-- Node 1: Đang chờ -->
+<div class="relative z-10 flex md:flex-col items-center gap-md md:gap-sm mb-lg md:mb-0">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] icon-fill">check</span>
+</div>
+<div class="md:text-center">
+<p class="text-label-lg font-label-lg text-on-surface">Đang chờ</p>
+<p class="text-label-md font-label-md text-on-surface-variant mt-xs">24 Oct, 14:30</p>
+</div>
+</div>
+<!-- Node 2: Đã xác nhận -->
+<div class="relative z-10 flex md:flex-col items-center gap-md md:gap-sm mb-lg md:mb-0">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] icon-fill">check</span>
+</div>
+<div class="md:text-center">
+<p class="text-label-lg font-label-lg text-on-surface">Đã xác nhận</p>
+<p class="text-label-md font-label-md text-on-surface-variant mt-xs">24 Oct, 15:15</p>
+</div>
+</div>
+<!-- Node 3: Đang chuẩn bị -->
+<div class="relative z-10 flex md:flex-col items-center gap-md md:gap-sm mb-lg md:mb-0">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] icon-fill">check</span>
+</div>
+<div class="md:text-center">
+<p class="text-label-lg font-label-lg text-on-surface">Đang chuẩn bị</p>
+<p class="text-label-md font-label-md text-on-surface-variant mt-xs">25 Oct, 09:00</p>
+</div>
+</div>
+<!-- Node 4: Đang giao -->
+<div class="relative z-10 flex md:flex-col items-center gap-md md:gap-sm mb-lg md:mb-0">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px] icon-fill">check</span>
+</div>
+<div class="md:text-center">
+<p class="text-label-lg font-label-lg text-on-surface">Đang giao</p>
+<p class="text-label-md font-label-md text-on-surface-variant mt-xs">26 Oct, 10:30</p>
+</div>
+</div>
+<!-- Node 5: Hoàn thành -->
+<div class="relative z-10 flex md:flex-col items-center gap-md md:gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm ring-4 ring-primary-container/30">
+<span class="material-symbols-outlined text-[16px] icon-fill">flag</span>
+</div>
+<div class="md:text-center">
+<p class="text-label-lg font-label-lg text-primary font-bold">Hoàn thành</p>
+<p class="text-label-md font-label-md text-on-surface-variant mt-xs">26 Oct, 14:45</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Grid: Products & Summary -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Product List -->
+<div class="lg:col-span-2 flex flex-col gap-md">
+<h2 class="text-headline-sm font-headline-sm">Items in Order</h2>
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-outline-variant/30 flex flex-col sm:flex-row gap-md hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+<div class="w-full sm:w-32 h-32 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A high-end NVIDIA RTX 4090 graphics card inside a premium PC build, illuminated by sleek white and blue RGB lighting against a dark, minimalist background. The photography is sharp and technical, emphasizing the high-performance hardware aesthetic typical of modern gaming components." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWAYCc-PINm880bnn5IprUJsfQGtVUdFo04KHZMMhJUPME1GCvRNbeQEJ5ybvM117SqKXpPoyhQKjwYzeT4zdWukZzdeFTVfWGrQLl_5CZxtOtB_9I4kEpO0Z_Fxh4bc08hQDH8RDufFBrI9t6i9CD10fi6w0cmjAAPIJIJmbl7vSH7GFUXuM0itLRaDsT-Z3M2Xw_e09CJCRIxgRgHu3zTh8yrB_PI48k-jaNNI-HhKiSye-mlu3F6g"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start gap-sm">
+<h3 class="text-body-lg font-body-lg font-semibold text-on-surface">ASUS ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X</h3>
+<span class="text-body-lg font-body-lg font-bold text-primary whitespace-nowrap">49,990,000 ₫</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-xs">Qty: 1 • SKU: VGA-ASUS-4090</p>
+</div>
+<div class="flex justify-end mt-sm sm:mt-0">
+<button class="flex items-center gap-xs px-md py-sm border border-primary text-primary rounded-lg text-body-sm font-body-sm font-medium hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">rate_review</span>
+                                    Đánh giá sản phẩm
+                                </button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-outline-variant/30 flex flex-col sm:flex-row gap-md hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
+<div class="w-full sm:w-32 h-32 bg-surface-container rounded-lg flex-shrink-0 overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A premium Intel Core i9 processor box displayed on a clean, light grey surface. The lighting is crisp and studio-quality, creating soft ambient shadows that highlight the metallic accents of the packaging. The mood is professional, technical, and high-quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA--wL66pg-oKD76RQ5Ai__J8xqdCAl_b9l8DTNKh8y_B69CNicSOwJLMr_I4jxm8D0xyLgi43cP8Dz04M3kz0w33Ii301fg05xQ_K5rPmo__R5ix6Zm0IDXeM_2JQrnh7AhYr11o1P05EmQ_ZJAc00SoGqqAVcPmjwJPTlgLPsUC5nqSmPn4gZJNp5BvONFV0bzPMX2E6tebap6_JOTeIassFxsXe7Han7m1GrpjTk-KA-yuWMrpWDzQ"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start gap-sm">
+<h3 class="text-body-lg font-body-lg font-semibold text-on-surface">Intel Core i9-14900K</h3>
+<span class="text-body-lg font-body-lg font-bold text-primary whitespace-nowrap">15,490,000 ₫</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-xs">Qty: 1 • SKU: CPU-INTEL-14900K</p>
+</div>
+<div class="flex justify-end mt-sm sm:mt-0">
+<button class="flex items-center gap-xs px-md py-sm border border-primary text-primary rounded-lg text-body-sm font-body-sm font-medium hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">rate_review</span>
+                                    Đánh giá sản phẩm
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary Panel -->
+<div class="flex flex-col gap-md">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.04)] border border-outline-variant/30 sticky top-[100px]">
+<h3 class="text-headline-sm font-headline-sm mb-md">Order Summary</h3>
+<div class="space-y-sm text-body-md font-body-md">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal (2 items)</span>
+<span>65,480,000 ₫</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Shipping</span>
+<span>Free</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Discount</span>
+<span class="text-secondary">-500,000 ₫</span>
+</div>
+<div class="h-px bg-outline-variant/50 my-md"></div>
+<div class="flex justify-between items-center">
+<span class="text-body-lg font-body-lg font-semibold text-on-surface">Total</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">64,980,000 ₫</span>
+</div>
+</div>
+<div class="mt-lg p-md bg-surface-container-low rounded-lg">
+<h4 class="text-label-lg font-label-lg text-on-surface mb-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+                                Shipping Address
+                            </h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Nguyen Van A</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">123 Nguyen Hue Street, District 1</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Ho Chi Minh City, Vietnam</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-xs">090 123 4567</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container full-width bottom-0 border-t border-outline-variant dark:border-outline mt-auto">
+<div class="w-full py-lg px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="text-headline-sm font-headline-sm font-bold text-primary">TechHub PC</div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Chính sách bảo hành</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Hướng dẫn thanh toán</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Tuyển dụng</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Vận chuyển</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-md font-label-md hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Liên hệ</a>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface dark:text-on-surface-variant text-center md:text-right">
+                © 2024 TechHub PC. Tất cả quyền được bảo lưu.
+            </div>
+</div>
+</footer>
+</body></html>

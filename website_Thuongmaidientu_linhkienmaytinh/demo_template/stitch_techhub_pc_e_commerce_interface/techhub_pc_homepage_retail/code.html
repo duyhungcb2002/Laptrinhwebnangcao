@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TechHub PC - Premium Hardware Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffb690",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f0f1f3",
+                        "on-tertiary-container": "#eef0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary-fixed": "#131b2e",
+                        "outline": "#737686",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdbca",
+                        "tertiary-container": "#656d84",
+                        "on-secondary-fixed-variant": "#783200",
+                        "on-surface-variant": "#434655",
+                        "background": "#f8f9fb",
+                        "on-error": "#ffffff",
+                        "surface": "#f8f9fb",
+                        "on-primary-fixed": "#00174b",
+                        "surface-variant": "#e1e2e4",
+                        "surface-container-high": "#e7e8ea",
+                        "tertiary": "#4d556b",
+                        "secondary": "#9d4300",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9fb",
+                        "on-surface": "#191c1e",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-container": "#5c2400",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-background": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fd761a",
+                        "surface-dim": "#d9dadc",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "primary-container": "#2563eb",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-low": "#f3f4f6",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#341100",
+                        "tertiary-fixed": "#dae2fd",
+                        "surface-container": "#edeef0",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e1e2e4",
+                        "primary": "#004ac6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "headline-sm": ["Be Vietnam Pro"],
+                        "headline-xl": ["Be Vietnam Pro"],
+                        "label-lg": ["Be Vietnam Pro"],
+                        "body-sm": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar from JSON -->
+<header class="bg-surface dark:bg-surface-container-high text-primary dark:text-inverse-primary docked full-width top-0 bg-surface-container-low dark:bg-surface-container-highest shadow-sm">
+<div class="flex flex-col w-full z-50 max-w-container-max mx-auto px-gutter py-sm">
+<div class="flex justify-between items-center w-full">
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary" href="#">TechHub PC</a>
+<div class="flex-1 px-lg hidden md:block max-w-2xl">
+<div class="relative w-full">
+<input class="w-full h-10 pl-4 pr-10 rounded-full border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none text-body-md font-body-md text-on-surface bg-surface-container-lowest" placeholder="Tìm kiếm sản phẩm..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant">search</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium text-label-md font-label-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Hotline</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium text-label-md font-label-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Store Locations</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium text-label-md font-label-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Order Tracking</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary text-label-md font-label-md" href="#">Trang chủ</a>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200"><span class="material-symbols-outlined" data-weight="fill">shopping_cart</span></button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200"><span class="material-symbols-outlined">account_circle</span></button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200"><span class="material-symbols-outlined">compare_arrows</span></button>
+<a class="text-label-md font-label-md text-on-surface-variant hidden lg:block" href="#">Login/Register</a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full flex-grow pt-lg pb-xl">
+<div class="max-w-container-max mx-auto px-gutter w-full">
+<!-- Icon Nav -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm border border-surface-variant p-4 mb-lg flex justify-between overflow-x-auto gap-4">
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">memory</span>
+<span class="text-label-md font-label-md">CPU</span>
+</a>
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">developer_board</span>
+<span class="text-label-md font-label-md">Mainboard</span>
+</a>
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">memory_alt</span>
+<span class="text-label-md font-label-md">RAM</span>
+</a>
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">videogame_asset</span>
+<span class="text-label-md font-label-md">VGA/GPU</span>
+</a>
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">sd_storage</span>
+<span class="text-label-md font-label-md">SSD</span>
+</a>
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">hard_drive</span>
+<span class="text-label-md font-label-md">HDD</span>
+</a>
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">power</span>
+<span class="text-label-md font-label-md">PSU</span>
+</a>
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">downloading</span>
+<span class="text-label-md font-label-md">Case</span>
+</a>
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">monitor</span>
+<span class="text-label-md font-label-md">Màn hình</span>
+</a>
+<a class="flex flex-col items-center gap-2 min-w-[80px] hover:text-primary transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-3xl">keyboard</span>
+<span class="text-label-md font-label-md">Phụ kiện</span>
+</a>
+</div>
+<!-- Hero Section -->
+<div class="flex flex-col lg:flex-row gap-4 mb-lg">
+<div class="lg:w-2/3 rounded-xl overflow-hidden relative shadow-sm">
+<img class="w-full h-[400px] object-cover" data-alt="A wide, high-resolution banner image featuring a premium, custom-built gaming PC with vibrant RGB lighting. The PC is positioned in a sleek, modern, light-themed studio setting. The lighting is crisp and cool, highlighting the metallic textures of the components and the intense blue and red accents. The mood is high-performance, cutting-edge, and aspirational, perfectly suited for a premium hardware store hero banner." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn0mN73KRAsGpUlS9EV0MGCzGHaRZ7U4aLrOrnEX9l5H8RnRzhiPbVGbOVyZXivWQDWkjxRy1UZVWVt-RMsnvU7em-caWfHtmxh2eaymVynsW6oGdM8lJEQMzdZpP4t26u5H28jj1qWqeznhWwE3V-lLe3hXTHrAZspvidOIXHPUiayu84oNCoo8UH_bA8GUHmeuX6tmY2JEdsVt5GW3yZSz_2cn4Gn8MZCnfYWn_RkJd-SA3w7odU_A"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent flex flex-col justify-end p-lg">
+<h2 class="text-on-primary text-headline-xl font-headline-xl font-bold mb-2">RTX 4090 Series</h2>
+<p class="text-on-primary text-body-lg font-body-lg mb-6">Sức mạnh đồ họa đỉnh cao thế hệ mới</p>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-lg w-max hover:bg-on-primary-fixed-variant transition-colors">Khám phá ngay</button>
+</div>
+</div>
+<div class="lg:w-1/3 flex flex-col gap-4">
+<div class="rounded-xl overflow-hidden relative shadow-sm h-[192px]">
+<img class="w-full h-full object-cover" data-alt="A smaller promotional banner showing a close-up of a high-end CPU cooler with a digital temperature display. The aesthetic is modern and clean, with a white background and sharp, technical lighting focusing on the metallic fins and the glowing screen. The mood is precise, cool, and advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBICgC6Jya5xy126D1s-C0cjBC2V7KBiDSBi6i5U9l4TEtOnCd-FGQ2gEw30lLHa7bTEklZl72IcQrpbwXHF25Fykcy89P1idpusDfjsT7cN4HOoeB4rbJgqK25yJGWn6vDgeM6Q9chEnhLFxMZlqygAJNe9mR9U6_IAm0ghKnHpgEdK8AccsamrxVK1VYWv3k1f-6j659sYTYJ_1K5bgEB3i1rVsXfE-hphhSfnpsxpS2U9mjtpo70ew"/>
+</div>
+<div class="rounded-xl overflow-hidden relative shadow-sm h-[192px]">
+<img class="w-full h-full object-cover" data-alt="A smaller promotional banner showcasing an ultra-fast NVMe SSD card resting on a clean, light-grey textured surface. The lighting is bright and focused, emphasizing the gold connectors and the sleek black heat sink. The overall tone is fast, reliable, and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8eLQdK2qXXfzhE2kvKPZMbBtK3w-UgteZGGzazZu8MrwZY3EB3jGe739uD3ZCtdJqC3SoT9cnPXGtmpKCdzA2SfE05UzqCqGHg7Il6OFqgoyjxom-bRgPj8A6ZoevKrhb5w5fH8W5L9X-cyK3NLroZcnUCml7x8nq8sEddMWq_Z0ZeY7JHkMc7LpB2eg25nnU1X_ToT-smlU3cJGxTApQWZvFLw--HL_ypQXNgI5xdtpUC4MQYiYSwA"/>
+</div>
+</div>
+</div>
+<!-- Flash Sale -->
+<section class="mb-xl">
+<div class="bg-error-container rounded-xl p-md shadow-sm">
+<div class="flex justify-between items-center mb-md border-b border-error/20 pb-2">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error text-3xl">bolt</span>
+<h2 class="text-headline-md font-headline-md font-bold text-on-error-container">Flash Sale Hôm Nay</h2>
+<div class="flex gap-2 ml-4">
+<span class="bg-error text-on-error px-2 py-1 rounded text-label-md font-label-md font-bold">02</span>:
+                                <span class="bg-error text-on-error px-2 py-1 rounded text-label-md font-label-md font-bold">45</span>:
+                                <span class="bg-error text-on-error px-2 py-1 rounded text-label-md font-label-md font-bold">12</span>
+</div>
+</div>
+<a class="text-error font-label-md text-label-md hover:underline flex items-center" href="#">Xem tất cả <span class="material-symbols-outlined text-sm ml-1">chevron_right</span></a>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Product Card 1 -->
+<div class="bg-surface-container-lowest rounded-lg p-4 flex flex-col shadow-sm border border-surface-variant relative group hover:shadow-md transition-shadow">
+<span class="absolute top-2 right-2 bg-error text-on-error text-[10px] font-bold px-2 py-1 rounded">-15%</span>
+<div class="h-40 w-full mb-4 flex items-center justify-center">
+<img class="object-contain h-full w-full" data-alt="A high-quality product photo of a black gaming mouse with RGB lighting on a pristine white background. The lighting is even, highlighting the ergonomic shape and textured grips. It feels modern, responsive, and ready for competitive gaming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8o61RhxufdZdapXrfqw501_Se1oEwqecQ7FNJQcGvLOUzpP6RI3e1xoRttnACqofALMjjYvzuh1ipjPTb8yhKOgb3ov526d_CJAWth4lmuT4aJy5xr6S0QDTC12URVYukR9N6WwJPLqrmjBbWtDzpZ-_KhMpPuLXKQW0CXSpyM2r9XQ-E9ScZPTQ3IFKokl_kEQQIYXAs9LH498ZM-_cNLx6UtZTrGv-h6Te002B73NF3ZI45oTuhBA"/>
+</div>
+<h3 class="text-body-md font-body-md font-semibold text-on-surface mb-1 line-clamp-2">Chuột Gaming Logitech G Pro X Superlight</h3>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-error font-bold text-headline-sm font-headline-sm">2.990.000₫</span>
+<span class="text-on-surface-variant line-through text-label-md font-label-md">3.500.000₫</span>
+</div>
+<div class="mt-auto pt-2">
+<div class="w-full bg-surface-variant rounded-full h-2 mb-1">
+<div class="bg-error h-2 rounded-full" style="width: 80%"></div>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Đã bán 120/150</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-lowest rounded-lg p-4 flex flex-col shadow-sm border border-surface-variant relative group hover:shadow-md transition-shadow">
+<span class="absolute top-2 right-2 bg-error text-on-error text-[10px] font-bold px-2 py-1 rounded">-20%</span>
+<div class="h-40 w-full mb-4 flex items-center justify-center">
+<img class="object-contain h-full w-full" data-alt="A clean, studio-lit photo of a mechanical gaming keyboard with vibrant, multi-colored backlit keys on a solid white background. The focus is sharp on the keycaps and brushed aluminum frame, portraying a premium, tactile, and high-performance device." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANnPVrJGHs9gtpXQ89-oSr2Dg4u1jsDoq_Q0E3o_q_Ehubq9of3jNa3A_1Mb0RsRq5yNrwCRJK5SIJGwYp1D7-lIrwAs5KPFRXOyJzmro6FYpxPMG5wajLE5GktQ30gfz0VwINxqzyKREteumhz_eQwOAWzhg_0B_29YSIqnS16RRru08cRg-La-riTEQMsgOj-y2ov238wbnS-58aj0e2e2185Uv5KL1tnqngSXQSD3I_Ku5td-xV6g"/>
+</div>
+<h3 class="text-body-md font-body-md font-semibold text-on-surface mb-1 line-clamp-2">Bàn phím cơ Razer BlackWidow V4 Pro</h3>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-error font-bold text-headline-sm font-headline-sm">4.790.000₫</span>
+<span class="text-on-surface-variant line-through text-label-md font-label-md">5.990.000₫</span>
+</div>
+<div class="mt-auto pt-2">
+<div class="w-full bg-surface-variant rounded-full h-2 mb-1">
+<div class="bg-error h-2 rounded-full" style="width: 45%"></div>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Đã bán 45/100</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer from JSON -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container text-on-surface dark:text-on-surface-variant full-width bottom-0 border-t border-outline-variant dark:border-outline flat no shadows">
+<div class="w-full py-lg px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between">
+<div class="mb-md md:mb-0">
+<span class="text-headline-sm font-headline-sm font-bold text-primary block mb-2">TechHub PC</span>
+<p class="text-body-sm font-body-sm">© 2024 TechHub PC. Tất cả quyền được bảo lưu.</p>
+</div>
+<div class="flex flex-wrap gap-4 md:gap-8">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Chính sách bảo hành</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Hướng dẫn thanh toán</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Tuyển dụng</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Vận chuyển</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Liên hệ</a>
+</div>
+</div>
+</footer>
+</body></html>

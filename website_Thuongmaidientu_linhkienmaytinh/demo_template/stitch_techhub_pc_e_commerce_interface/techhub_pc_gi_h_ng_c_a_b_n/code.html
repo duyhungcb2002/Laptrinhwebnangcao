@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Giỏ hàng - TechHub PC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#737686",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191c1e",
+                      "surface-container": "#edeef0",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#e1e2e4",
+                      "tertiary-container": "#656d84",
+                      "surface-container-high": "#e7e8ea",
+                      "on-tertiary-fixed": "#131b2e",
+                      "tertiary": "#4d556b",
+                      "secondary-fixed-dim": "#ffb690",
+                      "inverse-primary": "#b4c5ff",
+                      "on-tertiary-fixed-variant": "#3f465c",
+                      "inverse-surface": "#2e3132",
+                      "primary": "#004ac6",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-container-low": "#f3f4f6",
+                      "primary-container": "#2563eb",
+                      "on-primary-container": "#eeefff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#d9dadc",
+                      "on-surface": "#191c1e",
+                      "on-secondary-fixed-variant": "#783200",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-tint": "#0053db",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#00174b",
+                      "secondary-container": "#fd761a",
+                      "tertiary-fixed-dim": "#bec6e0",
+                      "surface-bright": "#f8f9fb",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#341100",
+                      "surface": "#f8f9fb",
+                      "primary-fixed": "#dbe1ff",
+                      "on-tertiary-container": "#eef0ff",
+                      "outline-variant": "#c3c6d7",
+                      "on-surface-variant": "#434655",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#5c2400",
+                      "tertiary-fixed": "#dae2fd",
+                      "secondary": "#9d4300",
+                      "inverse-on-surface": "#f0f1f3",
+                      "surface-container-highest": "#e1e2e4",
+                      "secondary-fixed": "#ffdbca",
+                      "background": "#f8f9fb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "xl": "80px",
+                      "xs": "4px",
+                      "lg": "48px",
+                      "md": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Be Vietnam Pro"],
+                      "label-md": ["Be Vietnam Pro"],
+                      "headline-sm": ["Be Vietnam Pro"],
+                      "headline-xl": ["Be Vietnam Pro"],
+                      "headline-lg": ["Be Vietnam Pro"],
+                      "headline-md": ["Be Vietnam Pro"],
+                      "body-sm": ["Be Vietnam Pro"],
+                      "body-md": ["Be Vietnam Pro"],
+                      "headline-lg-mobile": ["Be Vietnam Pro"],
+                      "label-lg": ["Be Vietnam Pro"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-high docked full-width top-0 bg-surface-container-low dark:bg-surface-container-highest shadow-sm shadow-sm sticky z-50">
+<div class="flex flex-col w-full z-50 max-w-container-max mx-auto px-gutter">
+<div class="flex items-center justify-between h-16">
+<!-- Brand -->
+<div class="flex-shrink-0 flex items-center">
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">
+                        TechHub PC
+                    </a>
+</div>
+<!-- Desktop Search (Center) -->
+<div class="hidden md:flex flex-1 max-w-2xl mx-8">
+<div class="relative w-full">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-outline">search</span>
+</span>
+<input class="w-full bg-surface-container-highest text-on-surface border border-outline-variant rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-sm text-body-sm transition-all duration-200" placeholder="Tìm kiếm sản phẩm..." type="text"/>
+</div>
+</div>
+<!-- Navigation & Actions -->
+<div class="hidden md:flex items-center space-x-6">
+<nav class="flex space-x-4">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium text-label-md font-label-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Hotline</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium text-label-md font-label-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Store Locations</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium text-label-md font-label-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Order Tracking</a>
+</nav>
+<div class="flex items-center space-x-4 border-l border-outline-variant pl-6">
+<button class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 relative group">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">2</span>
+<!-- Active intent logic: We are ON the shopping cart page -->
+<div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-primary rounded-t-sm"></div>
+</button>
+<button class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200">
+<span class="material-symbols-outlined">compare_arrows</span>
+</button>
+<a class="text-label-md font-label-md font-medium text-primary dark:text-inverse-primary hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Login/Register</a>
+</div>
+</div>
+<!-- Mobile Menu Button -->
+<div class="md:hidden flex items-center space-x-4">
+<button class="text-on-surface-variant">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Search (Row 2) -->
+<div class="md:hidden pb-4">
+<div class="relative w-full">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-outline">search</span>
+</span>
+<input class="w-full bg-surface-container-highest text-on-surface border border-outline-variant rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-sm text-body-sm" placeholder="Tìm kiếm sản phẩm..." type="text"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden max-w-container-max mx-auto w-full">
+<!-- SideNav (Desktop) -->
+<!-- Logic: We are in a transactional checkout flow. Suppressing SideNav to prioritize canvas -->
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-mobile md:px-gutter py-md md:py-lg bg-surface">
+<!-- Breadcrumbs -->
+<nav class="flex items-center text-body-sm font-body-sm text-on-surface-variant mb-6">
+<a class="hover:text-primary transition-colors" href="#">Trang chủ</a>
+<span class="material-symbols-outlined text-[16px] mx-2">chevron_right</span>
+<span class="text-on-surface font-medium">Giỏ hàng</span>
+</nav>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-background mb-8">
+                Giỏ hàng của bạn
+            </h1>
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Cart Items List (Left Column) -->
+<div class="lg:w-2/3 flex flex-col gap-6">
+<!-- Table Header (Desktop only) -->
+<div class="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-outline-variant text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">
+<div class="col-span-6">Sản phẩm</div>
+<div class="col-span-2 text-center">Đơn giá</div>
+<div class="col-span-2 text-center">Số lượng</div>
+<div class="col-span-2 text-right">Thành tiền</div>
+</div>
+<!-- Cart Item 1 -->
+<div class="flex flex-col md:grid md:grid-cols-12 gap-4 items-center bg-surface-container-lowest rounded-lg border border-surface-container-highest p-4 md:p-0 md:border-none md:bg-transparent md:rounded-none relative group transition-all duration-200 hover:bg-surface-container-lowest md:hover:bg-transparent md:hover:shadow-none hover:shadow-sm">
+<!-- Mobile Remove Button -->
+<button class="md:hidden absolute top-4 right-4 text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="col-span-6 flex items-center gap-4 w-full md:w-auto">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container rounded-md overflow-hidden border border-surface-container-high">
+<img class="w-full h-full object-cover mix-blend-multiply p-2" data-alt="A high-resolution, professional studio photograph of a premium Nvidia RTX 4090 graphics card. The metallic shroud and cooling fins are sharp and detailed. Subtle RGB lighting accents glow against a pristine white background. Corporate modern aesthetic, high-key lighting, emphasizing technical excellence and premium hardware quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBCZg6XmvhIPyqpDAso8G4G9tuu9u_niIkio74JNlJFiKHCuudAexAM0igiKEDu3kYydGaA35GL5PQCXFtyiPs-0jKHe3T3hcKId1a3WW9N--aETzlEfmS-WWKRdUcRpYgh06Ul-rH2xe_uGLR9Ea7iqhBcLYrjoOaaxgcxuSCmT4e5bg8kEiIo0DFouoxRCcMtxYPlaA98klfEhTdeqGtr4A7pQX87enooyjR8r40LeSQNV5xOzCuFA"/>
+</div>
+<div class="flex flex-col flex-1">
+<h3 class="text-body-md font-body-md font-medium text-on-surface line-clamp-2 mb-1">
+                                    VGA ASUS ROG Strix GeForce RTX 4090 OC Edition 24GB GDDR6X
+                                </h3>
+<span class="text-label-md font-label-md text-outline mb-2">Mã SP: ROG-STRIX-RTX4090-O24G-GAMING</span>
+<div class="md:hidden flex justify-between items-center mt-2">
+<span class="text-body-md font-body-md font-bold text-primary">58.990.000₫</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex col-span-2 justify-center">
+<span class="text-body-md font-body-md font-medium text-on-surface">58.990.000₫</span>
+</div>
+<div class="col-span-2 flex justify-start md:justify-center w-full md:w-auto mt-4 md:mt-0">
+<div class="flex items-center border border-outline-variant rounded bg-surface-container-lowest">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors rounded-l">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<input class="w-12 h-8 text-center border-none p-0 focus:ring-0 text-body-sm font-body-sm font-medium bg-transparent" min="1" type="number" value="1"/>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors rounded-r">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+<div class="hidden md:flex col-span-2 justify-end items-center gap-4">
+<span class="text-body-md font-body-md font-bold text-primary">58.990.000₫</span>
+<button class="text-outline hover:text-error transition-colors opacity-0 group-hover:opacity-100 p-1 rounded-full hover:bg-error-container">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Divider -->
+<div class="hidden md:block h-px w-full bg-surface-container-high"></div>
+<!-- Cart Item 2 -->
+<div class="flex flex-col md:grid md:grid-cols-12 gap-4 items-center bg-surface-container-lowest rounded-lg border border-surface-container-highest p-4 md:p-0 md:border-none md:bg-transparent md:rounded-none relative group transition-all duration-200 hover:bg-surface-container-lowest md:hover:bg-transparent md:hover:shadow-none hover:shadow-sm">
+<!-- Mobile Remove Button -->
+<button class="md:hidden absolute top-4 right-4 text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="col-span-6 flex items-center gap-4 w-full md:w-auto">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container rounded-md overflow-hidden border border-surface-container-high">
+<img class="w-full h-full object-cover mix-blend-multiply p-2" data-alt="A clean, studio lit close-up of a high-end Intel Core i9 processor resting inside its sleek, minimalist packaging. The metallic heat spreader catches the light. The background is a stark, bright white, enhancing the modern, corporate, high-performance aesthetic of premium tech retail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2EnfxlnETMLB0BttpN8i7FLgqITdfbFExDFDkcHT27-swEGv4w8ECqKjZXfae5DPOe01QQUt2L6XzAaqh60-DMrqn2qHqudd5fR5GoWtc8HhwcJ24ZnY7IgRwqjWBFB1X9DLOD7RwtYe--jmXz4f3iCUyQNDz0EYOm2qh1ia3tdHvAtgr3Jz7XXq9PTF-_1GatCzJsnHRDPltjrAl4grgS15H9whaW84dmc9HJ7Ak172TQ8zgKrVAoQ"/>
+</div>
+<div class="flex flex-col flex-1">
+<h3 class="text-body-md font-body-md font-medium text-on-surface line-clamp-2 mb-1">
+                                    CPU Intel Core i9-14900K (Up to 6.0GHz, 24 Nhân 32 Luồng, 36MB Cache)
+                                </h3>
+<span class="text-label-md font-label-md text-outline mb-2">Mã SP: BX8071514900K</span>
+<div class="md:hidden flex justify-between items-center mt-2">
+<span class="text-body-md font-body-md font-bold text-primary">15.490.000₫</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex col-span-2 justify-center">
+<span class="text-body-md font-body-md font-medium text-on-surface">15.490.000₫</span>
+</div>
+<div class="col-span-2 flex justify-start md:justify-center w-full md:w-auto mt-4 md:mt-0">
+<div class="flex items-center border border-outline-variant rounded bg-surface-container-lowest">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors rounded-l">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<input class="w-12 h-8 text-center border-none p-0 focus:ring-0 text-body-sm font-body-sm font-medium bg-transparent" min="1" type="number" value="1"/>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors rounded-r">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+<div class="hidden md:flex col-span-2 justify-end items-center gap-4">
+<span class="text-body-md font-body-md font-bold text-primary">15.490.000₫</span>
+<button class="text-outline hover:text-error transition-colors opacity-0 group-hover:opacity-100 p-1 rounded-full hover:bg-error-container">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Divider -->
+<div class="hidden md:block h-px w-full bg-surface-container-high"></div>
+<!-- Continue Shopping Link (Bottom Left) -->
+<div class="mt-4 hidden md:flex">
+<a class="flex items-center text-body-sm font-body-sm font-medium text-primary hover:text-primary-fixed-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] mr-1 group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                            Tiếp tục mua hàng
+                        </a>
+</div>
+</div>
+<!-- Order Summary (Right Column) -->
+<div class="lg:w-1/3">
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-6 sticky top-24 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.04)]">
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-6 pb-4 border-b border-surface-variant">Tóm tắt đơn hàng</h2>
+<div class="space-y-4 mb-6">
+<div class="flex justify-between items-center text-body-md font-body-md text-on-surface-variant">
+<span>Tạm tính (2 sản phẩm)</span>
+<span class="font-medium text-on-surface">74.480.000₫</span>
+</div>
+<!-- Promo Code Input -->
+<div class="pt-2 pb-2">
+<div class="flex gap-2">
+<input class="flex-1 bg-surface border border-outline-variant rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-sm text-body-sm text-on-surface" placeholder="Mã giảm giá" type="text"/>
+<button class="px-4 py-2 bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors rounded-md text-label-md font-label-md font-medium border border-outline-variant">
+                                        Áp dụng
+                                    </button>
+</div>
+</div>
+<div class="flex justify-between items-center text-body-md font-body-md text-on-surface-variant">
+<span>Phí vận chuyển</span>
+<span class="font-medium text-primary bg-primary-container/20 px-2 py-0.5 rounded text-label-md">Miễn phí</span>
+</div>
+</div>
+<div class="border-t border-surface-variant pt-4 mb-6">
+<div class="flex justify-between items-end">
+<span class="text-body-lg font-body-lg font-medium text-on-surface">Tổng tiền</span>
+<div class="text-right">
+<span class="block text-headline-md font-headline-md font-bold text-error">74.480.000₫</span>
+<span class="text-label-md font-label-md text-outline">(Đã bao gồm VAT nếu có)</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary hover:bg-primary-fixed-variant transition-colors duration-200 py-3 md:py-4 rounded-lg text-body-md font-body-md font-bold flex items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transform">
+                            Tiến hành thanh toán
+                            <span class="material-symbols-outlined ml-2 text-[20px]">arrow_forward</span>
+</button>
+<div class="mt-6 flex flex-col items-center justify-center gap-3">
+<p class="text-label-md font-label-md text-outline">Chấp nhận thanh toán</p>
+<div class="flex gap-2 text-outline-variant">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+<span class="material-symbols-outlined text-[24px]">qr_code_scanner</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Reference (Hidden by default, useful for dev implementation) -->
+<div class="hidden flex-col items-center justify-center py-xl bg-surface-container-lowest rounded-xl border border-surface-variant border-dashed mt-8">
+<span class="material-symbols-outlined text-[64px] text-surface-container-highest mb-4">shopping_cart</span>
+<p class="text-headline-sm font-headline-sm text-on-surface mb-2">Giỏ hàng trống</p>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 text-center max-w-md">Không có sản phẩm nào trong giỏ hàng của bạn. Hãy quay lại cửa hàng để tiếp tục mua sắm.</p>
+<a class="px-6 py-3 border-2 border-primary text-primary hover:bg-primary-container hover:text-on-primary-container transition-colors rounded-lg text-label-lg font-label-lg font-bold" href="#">
+                    Quay lại cửa hàng
+                </a>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container full-width bottom-0 border-t border-outline-variant dark:border-outline flat no shadows opacity-80 hover:opacity-100 transition-opacity duration-300">
+<div class="w-full py-lg px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between">
+<div class="flex flex-col space-y-4 mb-6 md:mb-0">
+<span class="text-headline-sm font-headline-sm font-bold text-primary text-on-surface dark:text-on-surface-variant">TechHub PC</span>
+<p class="text-body-sm font-body-sm text-on-surface dark:text-on-surface-variant">© 2024 TechHub PC. Tất cả quyền được bảo lưu.</p>
+</div>
+<nav class="flex flex-wrap gap-4 md:gap-8">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Chính sách bảo hành</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Hướng dẫn thanh toán</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Tuyển dụng</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Vận chuyển</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Liên hệ</a>
+</nav>
+</div>
+</footer>
+</body></html>

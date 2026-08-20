@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thanh Toán - TechHub PC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#737686",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191c1e",
+                      "surface-container": "#edeef0",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#e1e2e4",
+                      "tertiary-container": "#656d84",
+                      "surface-container-high": "#e7e8ea",
+                      "on-tertiary-fixed": "#131b2e",
+                      "tertiary": "#4d556b",
+                      "secondary-fixed-dim": "#ffb690",
+                      "inverse-primary": "#b4c5ff",
+                      "on-tertiary-fixed-variant": "#3f465c",
+                      "inverse-surface": "#2e3132",
+                      "primary": "#004ac6",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-container-low": "#f3f4f6",
+                      "primary-container": "#2563eb",
+                      "on-primary-container": "#eeefff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#d9dadc",
+                      "on-surface": "#191c1e",
+                      "on-secondary-fixed-variant": "#783200",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-tint": "#0053db",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#00174b",
+                      "secondary-container": "#fd761a",
+                      "tertiary-fixed-dim": "#bec6e0",
+                      "surface-bright": "#f8f9fb",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#341100",
+                      "surface": "#f8f9fb",
+                      "primary-fixed": "#dbe1ff",
+                      "on-tertiary-container": "#eef0ff",
+                      "outline-variant": "#c3c6d7",
+                      "on-surface-variant": "#434655",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#5c2400",
+                      "tertiary-fixed": "#dae2fd",
+                      "secondary": "#9d4300",
+                      "inverse-on-surface": "#f0f1f3",
+                      "surface-container-highest": "#e1e2e4",
+                      "secondary-fixed": "#ffdbca",
+                      "background": "#f8f9fb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "xl": "80px",
+                      "xs": "4px",
+                      "lg": "48px",
+                      "md": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Be Vietnam Pro"
+                      ],
+                      "label-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-sm": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-xl": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-lg": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "body-sm": [
+                              "Be Vietnam Pro"
+                      ],
+                      "body-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-lg-mobile": [
+                              "Be Vietnam Pro"
+                      ],
+                      "label-lg": [
+                              "Be Vietnam Pro"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-xl": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #f8f9fb;
+        }
+    </style>
+</head>
+<body class="text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopAppBar Content Suppressed due to Transactional Page Intent (Checkout) -->
+<!-- Nav Shell Content Suppressed due to Transactional Page Intent (Checkout) -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-lg">
+<div class="mb-lg">
+<a class="inline-flex items-center text-primary font-label-md hover:underline mb-sm" href="#">
+<span class="material-symbols-outlined mr-xs" style="font-size: 16px;">arrow_back</span>
+                Trở lại giỏ hàng
+            </a>
+<h1 class="text-headline-lg font-headline-lg md:text-headline-xl md:font-headline-xl text-on-surface">Thanh toán an toàn</h1>
+</div>
+<form class="grid grid-cols-1 lg:grid-cols-12 gap-gutter" id="checkout-form">
+<!-- Left: Thông tin giao hàng -->
+<section class="lg:col-span-4 flex flex-col gap-md">
+<div class="bg-surface-container-lowest rounded-lg p-md shadow-sm border border-surface-variant">
+<h2 class="text-headline-sm font-headline-sm mb-md flex items-center">
+<span class="material-symbols-outlined mr-sm text-primary">local_shipping</span>
+                        Thông tin giao hàng
+                    </h2>
+<div class="space-y-sm">
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-xs" for="fullname">Họ và tên *</label>
+<input class="w-full rounded-md border-outline-variant bg-surface-container-lowest px-sm py-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="fullname" name="fullname" placeholder="Nhập họ và tên" required="" type="text"/>
+<p class="text-error text-label-md mt-xs hidden" id="fullname-error">Vui lòng nhập họ tên</p>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-xs" for="phone">Số điện thoại *</label>
+<input class="w-full rounded-md border-outline-variant bg-surface-container-lowest px-sm py-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="phone" name="phone" placeholder="Nhập số điện thoại" required="" type="tel"/>
+<p class="text-error text-label-md mt-xs hidden" id="phone-error">Số điện thoại không hợp lệ</p>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-xs" for="address">Địa chỉ giao hàng *</label>
+<input class="w-full rounded-md border-error bg-error-container/10 px-sm py-sm text-body-md focus:border-error focus:ring-1 focus:ring-error outline-none transition-colors" id="address" name="address" placeholder="Số nhà, tên đường, phường/xã..." required="" type="text"/>
+<p class="text-error text-label-md mt-xs" id="address-error">Vui lòng nhập địa chỉ giao hàng</p>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-xs" for="notes">Ghi chú (Tùy chọn)</label>
+<textarea class="w-full rounded-md border-outline-variant bg-surface-container-lowest px-sm py-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" id="notes" name="notes" placeholder="Ghi chú thêm về đơn hàng..." rows="3"></textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Middle: Phương thức thanh toán -->
+<section class="lg:col-span-4 flex flex-col gap-md">
+<div class="bg-surface-container-lowest rounded-lg p-md shadow-sm border border-surface-variant">
+<h2 class="text-headline-sm font-headline-sm mb-md flex items-center">
+<span class="material-symbols-outlined mr-sm text-primary">payments</span>
+                        Phương thức thanh toán
+                    </h2>
+<div class="space-y-sm">
+<!-- COD Option -->
+<label class="flex items-start p-sm rounded-md border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-colors relative has-[:checked]:border-primary has-[:checked]:bg-primary-fixed/30">
+<div class="flex items-center h-6">
+<input checked="" class="w-4 h-4 text-primary border-outline-variant focus:ring-primary" name="payment_method" type="radio" value="cod"/>
+</div>
+<div class="ml-sm">
+<span class="block text-body-md font-bold text-on-surface">Thanh toán khi nhận hàng (COD)</span>
+<span class="block text-body-sm text-on-surface-variant mt-xs">Thanh toán bằng tiền mặt khi đơn hàng được giao đến bạn.</span>
+</div>
+<span class="material-symbols-outlined absolute right-sm top-sm text-outline-variant" style="font-size: 24px;">storefront</span>
+</label>
+<!-- Bank Transfer Option -->
+<label class="flex items-start p-sm rounded-md border border-outline-variant cursor-pointer hover:bg-surface-container-low transition-colors relative has-[:checked]:border-primary has-[:checked]:bg-primary-fixed/30">
+<div class="flex items-center h-6">
+<input class="w-4 h-4 text-primary border-outline-variant focus:ring-primary" name="payment_method" type="radio" value="bank"/>
+</div>
+<div class="ml-sm">
+<span class="block text-body-md font-bold text-on-surface">Chuyển khoản qua ngân hàng</span>
+<span class="block text-body-sm text-on-surface-variant mt-xs">Chuyển khoản trực tiếp vào tài khoản ngân hàng của TechHub PC.</span>
+</div>
+<span class="material-symbols-outlined absolute right-sm top-sm text-outline-variant" style="font-size: 24px;">account_balance</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Right: Đơn hàng của bạn -->
+<section class="lg:col-span-4 flex flex-col gap-md">
+<div class="bg-surface-container-lowest rounded-lg p-md shadow-sm border border-surface-variant sticky top-md">
+<h2 class="text-headline-sm font-headline-sm mb-md flex items-center">
+<span class="material-symbols-outlined mr-sm text-primary">receipt_long</span>
+                        Đơn hàng của bạn
+                    </h2>
+<!-- Item List -->
+<div class="space-y-sm mb-md border-b border-surface-variant pb-md">
+<!-- Item 1 -->
+<div class="flex gap-sm items-start">
+<div class="w-16 h-16 bg-surface-container rounded-md overflow-hidden flex-shrink-0">
+<img alt="VGA ASUS ROG Strix GeForce RTX 4090" class="w-full h-full object-cover" data-alt="A high-quality product photo of an NVIDIA RTX 4090 graphics card, isolated on a clean white background, studio lighting, sharp details on the cooling fans and heatsink, representing premium PC hardware." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ193kOazMGPg9CLmMF0LG7a9bLhpbC2hCnZHQ9SOhkL9WxY-D6J9Sg3X9yZtLoJ6t15poiZ1Y7zeey8rscQPmfPrm0IE2Gu3PVA5710d23jk8KwFHJAYvKuKve3hzRJUaKU7nrbpwv8tvMGhfKeGxWk4xd9AJqBfDg5u2w-Ej2gfoGawKG43eDE5HOnb6hkZJ6j1sq1c80Icibfw_x5RdrIlJ7G64FjBOImOnGJ2Nb3FFdUzegYL3jw"/>
+</div>
+<div class="flex-grow">
+<h3 class="text-body-sm font-bold text-on-surface line-clamp-2">VGA ASUS ROG Strix GeForce RTX 4090 24GB GDDR6X White OC Edition</h3>
+<div class="text-label-md text-on-surface-variant mt-xs">Số lượng: 1</div>
+</div>
+<div class="text-body-md font-bold text-on-surface flex-shrink-0">
+                                59.990.000₫
+                            </div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-sm items-start">
+<div class="w-16 h-16 bg-surface-container rounded-md overflow-hidden flex-shrink-0">
+<img alt="CPU Intel Core i9-14900K" class="w-full h-full object-cover" data-alt="A detailed product shot of an Intel Core i9-14900K processor box, angled slightly, clean white background, high resolution showing the branding and typography clearly, professional studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnfhy1_WLZLBd6Lb1LEX3g2G0tRtJcTfCfbZMAYSph8uhu7WF_Si9VNRo4ygvHKr_2HGwRABu3x80GUE8HoOjCqvQE89w2NsezPdJTDrGX50szWyaTiAfTpSSDJ7SwV_xlIM_fmtI_mglXjTAji7dpe0I25QelyCMkwt1KeXSe44IQbZADQ6j9hueifgXY2aH9gYWaFt1BcnIfnD_zQPEJG0qEwM3wsloQyhJPFxXfLL5q7Yy7maUseQ"/>
+</div>
+<div class="flex-grow">
+<h3 class="text-body-sm font-bold text-on-surface line-clamp-2">CPU Intel Core i9-14900K (Up to 6.0GHz, 24 Cores 32 Threads, 36MB Cache)</h3>
+<div class="text-label-md text-on-surface-variant mt-xs">Số lượng: 1</div>
+</div>
+<div class="text-body-md font-bold text-on-surface flex-shrink-0">
+                                14.590.000₫
+                            </div>
+</div>
+</div>
+<!-- Summary -->
+<div class="space-y-xs text-body-md mb-md">
+<div class="flex justify-between text-on-surface-variant">
+<span>Tạm tính</span>
+<span>74.580.000₫</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Phí vận chuyển</span>
+<span>Miễn phí</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Giảm giá</span>
+<span class="text-error">-0₫</span>
+</div>
+</div>
+<div class="flex justify-between items-end border-t border-surface-variant pt-sm mb-lg">
+<span class="text-headline-md font-headline-md text-on-surface">Tổng cộng</span>
+<span class="text-headline-lg font-headline-lg text-primary">74.580.000₫</span>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-bold text-body-lg py-sm px-md rounded-md transition-colors flex items-center justify-center" onclick="validateForm()" type="button">
+<span class="material-symbols-outlined mr-xs">check_circle</span>
+                        Đặt hàng
+                    </button>
+<p class="text-label-md text-center text-on-surface-variant mt-sm">
+                        Bằng cách đặt hàng, bạn đồng ý với <a class="text-primary hover:underline" href="#">Điều khoản dịch vụ</a> của chúng tôi.
+                    </p>
+</div>
+</section>
+</form>
+</main>
+<!-- Footer Content Suppressed due to Transactional Page Intent (Checkout) -->
+<script>
+        function validateForm() {
+            // Simple validation mock
+            const addressInput = document.getElementById('address');
+            const addressError = document.getElementById('address-error');
+            
+            // Re-triggering the error state for demonstration based on the prompt "red outlines for missing fields"
+            addressInput.classList.remove('border-outline-variant');
+            addressInput.classList.add('border-error', 'bg-error-container/10', 'focus:border-error', 'focus:ring-error');
+            addressError.classList.remove('hidden');
+            
+            // Smooth scroll to first error
+            addressInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            addressInput.focus();
+        }
+    </script>
+</body></html>

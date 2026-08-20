@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Profile - TechHub PC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#737686",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1e",
+                        "surface-container": "#edeef0",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e2e4",
+                        "tertiary-container": "#656d84",
+                        "surface-container-high": "#e7e8ea",
+                        "on-tertiary-fixed": "#131b2e",
+                        "tertiary": "#4d556b",
+                        "secondary-fixed-dim": "#ffb690",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#2e3132",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-low": "#f3f4f6",
+                        "primary-container": "#2563eb",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d9dadc",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#783200",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#0053db",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-container": "#fd761a",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-bright": "#f8f9fb",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#341100",
+                        "surface": "#f8f9fb",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-container": "#eef0ff",
+                        "outline-variant": "#c3c6d7",
+                        "on-surface-variant": "#434655",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#5c2400",
+                        "tertiary-fixed": "#dae2fd",
+                        "secondary": "#9d4300",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface-container-highest": "#e1e2e4",
+                        "secondary-fixed": "#ffdbca",
+                        "background": "#f8f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-sm": ["Be Vietnam Pro"],
+                        "headline-xl": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "body-sm": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "label-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .glass-card {
+                @apply bg-surface-container-lowest/90 backdrop-blur-md border border-outline-variant/30 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-xl;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-high docked full-width top-0 bg-surface-container-low dark:bg-surface-container-highest shadow-sm shadow-sm flex flex-col w-full z-50 max-w-container-max mx-auto px-gutter py-md">
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-6">
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight" href="#">TechHub PC</a>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 text-label-md font-label-md" href="#">Hotline</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 text-label-md font-label-md" href="#">Store Locations</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200 text-label-md font-label-md" href="#">Order Tracking</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-2 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm w-48 text-on-surface" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-on-surface hover:text-primary transition-colors duration-200 rounded-full hover:bg-surface-container-highest">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 text-primary dark:text-inverse-primary font-bold border-b-2 border-primary transition-colors duration-200 rounded-full hover:bg-surface-container-highest scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="account_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+<button class="p-2 text-on-surface hover:text-primary transition-colors duration-200 rounded-full hover:bg-surface-container-highest">
+<span class="material-symbols-outlined" data-icon="compare_arrows">compare_arrows</span>
+</button>
+<a class="hidden md:inline-flex items-center justify-center px-4 py-2 bg-primary text-on-primary rounded-lg text-label-md font-label-md hover:bg-primary-container transition-colors" href="#">Login/Register</a>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<div class="flex-grow flex w-full max-w-container-max mx-auto px-gutter py-lg gap-lg">
+<!-- Sidebar Navigation (Account Specific) -->
+<aside class="hidden lg:flex flex-col w-64 flex-shrink-0 gap-4">
+<div class="glass-card p-6 sticky top-24">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-container-highest">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional headshot portrait of a modern PC gamer or tech enthusiast. They are looking directly at the camera with a confident, slight smile. The lighting is bright, high-key white, creating a clean, modern aesthetic. The background is a very subtle, soft light grey to maintain focus on the subject. The style is sharp, clean, and corporate-modern, reflecting a high-end tech retail platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkjUM-YTrBbiaP-hJQGtIMGSO5BFbcXwVl7efwp5n5s6qhWXw6m_9E6DMaI01KZ1etezW87_GFkxDxRtjqqBbvGIvm5OW_1CBMAIjP2Vo6Bb3fwWHWGIX3IabIf5hREDuFraeaNqphRCJTk-tVGMsztNBsx9aAbJ9rKYNw9pStePoxVnTNJ46zPEptD6Qh7fLWhEvHQTDyALKnPCx0rqLe5FX9Tqu9bBYeTzMrCXJdY0K1tvUjKieQiQ"/>
+</div>
+<div>
+<h3 class="text-label-lg font-label-lg text-on-surface">Nguyễn Văn A</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Member since 2023</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container font-bold rounded-lg px-4 py-3 text-label-lg font-label-lg transition-transform duration-200 translate-x-1 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+                        Hồ sơ
+                    </a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest rounded-lg px-4 py-3 text-label-lg font-label-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                        Lịch sử đơn hàng
+                    </a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest rounded-lg px-4 py-3 text-label-lg font-label-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                        Đổi mật khẩu
+                    </a>
+<hr class="border-outline-variant my-2"/>
+<a class="flex items-center gap-3 text-error hover:bg-error-container/20 rounded-lg px-4 py-3 text-label-lg font-label-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                        Đăng xuất
+                    </a>
+</nav>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-grow flex flex-col gap-lg min-w-0">
+<!-- Page Header -->
+<div class="flex flex-col gap-2">
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">Hồ sơ cá nhân</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Quản lý thông tin tài khoản và tùy chọn của bạn.</p>
+</div>
+<!-- Profile Form (Bento Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Avatar Card -->
+<div class="glass-card p-6 flex flex-col items-center justify-center gap-4 col-span-1">
+<div class="relative w-32 h-32 rounded-full overflow-hidden border-4 border-surface shadow-sm group">
+<img alt="User Avatar" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A professional headshot portrait of a modern PC gamer or tech enthusiast. They are looking directly at the camera with a confident, slight smile. The lighting is bright, high-key white, creating a clean, modern aesthetic. The background is a very subtle, soft light grey to maintain focus on the subject. The style is sharp, clean, and corporate-modern, reflecting a high-end tech retail platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4fxMsPjH-vGyC01B1x1yRetdIiH45Asj1km31VtRIeBnwFujlcK6a56dFdRauyIJTnOwVzT0m30_uzzG4PZihVl0R5a6eTdog4_aqwmbUkrxloTTErl-zZip_hPhnZixHz0sePHaXVBIBhPMe3XYRfqQ1MoP-adW3Uywm45rQ73HLg9WmJeo3Da4i9EFKOI0FJ1eQFg8XiJVf3dPD32rPXO7YT3WrsNYKU-fa1b8L0ZCap6F2-JpSAw"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-white" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<button class="px-4 py-2 border border-outline rounded-lg text-label-md font-label-md text-on-surface hover:bg-surface-container-highest transition-colors">Đổi ảnh đại diện</button>
+<p class="text-label-md font-label-md text-outline text-center mt-2">Định dạng JPEG, PNG.<br/>Dung lượng tối đa 2MB.</p>
+</div>
+<!-- Personal Info Form -->
+<div class="glass-card p-6 col-span-1 md:col-span-2">
+<form class="flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Họ tên</label>
+<input class="px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-md font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none" type="text" value="Nguyễn Văn A"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Số điện thoại</label>
+<input class="px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-md font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none" type="tel" value="0901234567"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Email</label>
+<input class="px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-md font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none bg-surface-container-high cursor-not-allowed" disabled="" type="email" value="nguyenvana@example.com"/>
+<p class="text-label-md font-label-md text-outline text-xs mt-1">Email không thể thay đổi sau khi đăng ký.</p>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Ngày sinh</label>
+<div class="relative">
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-body-md font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none appearance-none" type="date" value="1995-08-15"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+<div class="flex justify-end mt-4">
+<button class="px-6 py-3 bg-primary text-on-primary rounded-lg text-label-lg font-label-lg hover:bg-primary-container transition-colors shadow-sm hover:shadow flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="save">save</span>
+                                Lưu thay đổi
+                            </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Recent Orders Section -->
+<div class="flex flex-col gap-4 mt-8">
+<div class="flex items-center justify-between">
+<h2 class="text-headline-sm font-headline-sm text-on-surface tracking-tight">Đơn hàng gần đây</h2>
+<a class="text-primary hover:text-primary-container text-label-md font-label-md font-medium transition-colors" href="#">Xem tất cả</a>
+</div>
+<div class="glass-card overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-4 px-6 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Mã đơn hàng</th>
+<th class="py-4 px-6 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Ngày đặt</th>
+<th class="py-4 px-6 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Tổng tiền</th>
+<th class="py-4 px-6 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="text-body-md font-body-md text-on-surface divide-y divide-outline-variant/50">
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-6 font-medium text-primary">#TH-9824</td>
+<td class="py-4 px-6">12 Thg 10, 2023</td>
+<td class="py-4 px-6 font-medium">45.500.000 ₫</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-md font-label-md bg-secondary-container/20 text-secondary border border-secondary/30">
+                                            Đang xử lý
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-6 font-medium text-primary">#TH-8711</td>
+<td class="py-4 px-6">28 Thg 09, 2023</td>
+<td class="py-4 px-6 font-medium">12.990.000 ₫</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-md font-label-md bg-tertiary-fixed text-on-tertiary-fixed-variant border border-tertiary-fixed-dim">
+                                            Hoàn thành
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-4 px-6 font-medium text-primary">#TH-7542</td>
+<td class="py-4 px-6">05 Thg 08, 2023</td>
+<td class="py-4 px-6 font-medium">2.450.000 ₫</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-md font-label-md bg-tertiary-fixed text-on-tertiary-fixed-variant border border-tertiary-fixed-dim">
+                                            Hoàn thành
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container text-on-surface dark:text-on-surface-variant full-width bottom-0 border-t border-outline-variant dark:border-outline mt-auto">
+<div class="w-full py-lg px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start gap-2 opacity-80 hover:opacity-100 transition-opacity">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">TechHub PC</span>
+<p class="text-body-sm font-body-sm">© 2024 TechHub PC. Tất cả quyền được bảo lưu.</p>
+</div>
+<nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Chính sách bảo hành</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Hướng dẫn thanh toán</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Tuyển dụng</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Vận chuyển</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all" href="#">Liên hệ</a>
+</nav>
+</div>
+</footer>
+</body></html>

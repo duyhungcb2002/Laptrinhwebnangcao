@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quản lý Sản phẩm - TechHub PC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#737686",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1e",
+                        "surface-container": "#edeef0",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e2e4",
+                        "tertiary-container": "#656d84",
+                        "surface-container-high": "#e7e8ea",
+                        "on-tertiary-fixed": "#131b2e",
+                        "tertiary": "#4d556b",
+                        "secondary-fixed-dim": "#ffb690",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#2e3132",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-low": "#f3f4f6",
+                        "primary-container": "#2563eb",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d9dadc",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#783200",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#0053db",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-container": "#fd761a",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-bright": "#f8f9fb",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#341100",
+                        "surface": "#f8f9fb",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-container": "#eef0ff",
+                        "outline-variant": "#c3c6d7",
+                        "on-surface-variant": "#434655",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#5c2400",
+                        "tertiary-fixed": "#dae2fd",
+                        "secondary": "#9d4300",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface-container-highest": "#e1e2e4",
+                        "secondary-fixed": "#ffdbca",
+                        "background": "#f8f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-sm": ["Be Vietnam Pro"],
+                        "headline-xl": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "body-sm": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "label-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface shadow-sm flex flex-col w-full z-50 max-w-container-max mx-auto px-gutter docked full-width top-0 bg-surface-container-low">
+<div class="flex items-center justify-between h-16">
+<!-- Logo -->
+<div class="flex-shrink-0 flex items-center">
+<span class="text-headline-md font-headline-md font-bold text-primary">TechHub PC</span>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex space-x-8">
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Hotline</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Store Locations</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Order Tracking</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center space-x-6">
+<!-- Search -->
+<div class="relative hidden sm:block">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-outline-variant rounded-lg leading-5 bg-surface-container-lowest placeholder-on-surface-variant focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out text-body-sm font-body-sm" placeholder="Tìm kiếm sản phẩm..." type="text"/>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200" data-icon="shopping_cart">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200" data-icon="account_circle">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200" data-icon="compare_arrows">
+<span class="material-symbols-outlined">compare_arrows</span>
+</button>
+</div>
+<a class="hidden lg:block text-primary font-medium hover:text-secondary transition-colors duration-200 text-label-md font-label-md" href="#">Login/Register</a>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-0 h-full py-md bg-surface border-r border-outline-variant docked left-0 h-full w-64 z-40 mt-16">
+<div class="px-6 mb-6">
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">TechHub PC</h2>
+<p class="text-body-sm text-on-surface-variant mt-1">Premium Hardware Store</p>
+</div>
+<nav class="flex-1 overflow-y-auto space-y-1 px-2">
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">memory</span>
+<span class="text-label-lg font-label-lg">CPU</span>
+</a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">developer_board</span>
+<span class="text-label-lg font-label-lg">Mainboard</span>
+</a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">memory_alt</span>
+<span class="text-label-lg font-label-lg">RAM</span>
+</a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">videogame_asset</span>
+<span class="text-label-lg font-label-lg">VGA/GPU</span>
+</a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">sd_storage</span>
+<span class="text-label-lg font-label-lg">SSD</span>
+</a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">hard_drive</span>
+<span class="text-label-lg font-label-lg">HDD</span>
+</a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">power</span>
+<span class="text-label-lg font-label-lg">PSU</span>
+</a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">downloading</span>
+<span class="text-label-lg font-label-lg">Case</span>
+</a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">monitor</span>
+<span class="text-label-lg font-label-lg">Màn hình</span>
+</a>
+<a class="flex items-center text-on-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3 text-outline group-hover:text-primary transition-colors">keyboard</span>
+<span class="text-label-lg font-label-lg">Phụ kiện</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-64 p-gutter max-w-container-max mx-auto w-full overflow-y-auto">
+<div class="flex justify-between items-center mb-md">
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Quản lý Sản phẩm</h1>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg py-2 px-4 rounded-lg shadow-sm flex items-center transition-colors">
+<span class="material-symbols-outlined mr-2">add</span>
+                    Thêm sản phẩm
+                </button>
+</div>
+<!-- Filters & Actions Bar -->
+<div class="bg-surface-container-lowest p-md rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.04)] border border-outline-variant mb-md flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex flex-1 gap-4 w-full md:w-auto">
+<div class="relative flex-1 max-w-md">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-body-sm font-body-sm focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Tìm theo SKU, tên sản phẩm..." type="text"/>
+</div>
+<select class="border border-outline-variant rounded-lg bg-surface-container-lowest text-body-sm font-body-sm py-2 px-3 focus:ring-1 focus:ring-primary focus:border-primary w-48">
+<option value="">Tất cả danh mục</option>
+<option value="cpu">CPU</option>
+<option value="vga">VGA/GPU</option>
+<option value="main">Mainboard</option>
+</select>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface-container-lowest rounded-lg shadow-[0_4px_8px_rgba(0,0,0,0.04)] border border-outline-variant overflow-hidden">
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-outline-variant">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-6 py-3 text-left text-label-md font-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Hình ảnh</th>
+<th class="px-6 py-3 text-left text-label-md font-label-md text-on-surface-variant uppercase tracking-wider" scope="col">SKU</th>
+<th class="px-6 py-3 text-left text-label-md font-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Tên sản phẩm</th>
+<th class="px-6 py-3 text-left text-label-md font-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Danh mục</th>
+<th class="px-6 py-3 text-left text-label-md font-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Giá</th>
+<th class="px-6 py-3 text-left text-label-md font-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Tồn kho</th>
+<th class="px-6 py-3 text-left text-label-md font-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Trạng thái</th>
+<th class="px-6 py-3 text-right text-label-md font-label-md text-on-surface-variant uppercase tracking-wider" scope="col">Hành động</th>
+</tr>
+</thead>
+<tbody class="bg-surface-container-lowest divide-y divide-outline-variant text-body-sm font-body-sm">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="h-12 w-12 rounded bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="h-full w-full object-cover" data-alt="A high-quality product photo of an Intel Core i9-14900K processor box on a clean white background. Studio lighting, professional e-commerce style, emphasizing the blue and white packaging design. Crisp details and neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3fuhxjgra76TC3c5WkX2dJqPkR9ILcXlFCERDX9BE-zvg5_-XytwxnRgLbGHwIkb2_iZmozEhmU0WkB2F-beXQz7TAKGxxWdpvufiifU7ZKMfg48VXsKWvvgRImd6Suh3gns6Ret0e-atB-E5qF0-i8pvigZlALsWIlxcOTExHWtbkqsw5G73PTZ9UUvdR05vLDQJhFcN-nmbjCCJ_jtLKkjCF_DWdoNZ46R1MCPhmqXxUcPItYlCVg"/>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface font-medium">CPU-INT-14900K</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface">Intel Core i9-14900K</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface-variant">CPU</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface">14,990,000 đ</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface">45</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-primary-fixed text-on-primary-fixed">Hiển thị</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-tertiary hover:text-primary mx-1" title="Edit"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-tertiary hover:text-error mx-1" title="Delete"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-bright">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="h-12 w-12 rounded bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="h-full w-full object-cover" data-alt="A high-quality product photo of an ASUS ROG Strix GeForce RTX 4090 graphics card on a clean white background. Studio lighting, professional e-commerce style, emphasizing the black cooling shroud and RGB elements. Crisp details and neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfZQ2nOmfUIUDiucqzpMV2uhwE4Gg0e_lBnmLJXuh2Mgu5-J7r-8Q8GzNAO-OSMsvXBqCTxsGiwg9nUqaC46Xk1fRDawnQacY-t3ev3Pzf8pZ-llQ0MTIjhd2UrCyMoGdZYKj5B32Es_3p8AvxsUIv0OeLasqlp0N9P57LNeNzrpBIAR_Br3GaYxHmp4VMer8sPfPmLz9mvhzCiQQvL72qKpq0WOpCk8ZG8Mlbq33UwMoPcOO5iQ-2wg"/>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface font-medium">VGA-ASU-4090R</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface">ASUS ROG Strix RTX 4090</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface-variant">VGA/GPU</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface">58,990,000 đ</td>
+<td class="px-6 py-4 whitespace-nowrap text-error font-medium">2 (Sắp hết)</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-primary-fixed text-on-primary-fixed">Hiển thị</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-tertiary hover:text-primary mx-1" title="Edit"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-tertiary hover:text-error mx-1" title="Delete"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="h-12 w-12 rounded bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<span class="material-symbols-outlined text-outline">image</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface font-medium">RAM-COR-32D5</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface">Corsair Dominator Platinum 32GB DDR5</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface-variant">RAM</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface">4,590,000 đ</td>
+<td class="px-6 py-4 whitespace-nowrap text-on-surface">120</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-surface-variant text-on-surface-variant">Ẩn</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-tertiary hover:text-primary mx-1" title="Edit"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="text-tertiary hover:text-error mx-1" title="Delete"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-surface-container-lowest px-4 py-3 border-t border-outline-variant flex items-center justify-between sm:px-6">
+<div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+<div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                                Hiển thị <span class="font-medium text-on-surface">1</span> đến <span class="font-medium text-on-surface">10</span> của <span class="font-medium text-on-surface">97</span> kết quả
+                            </p>
+</div>
+<div>
+<nav aria-label="Pagination" class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+<a class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-outline-variant bg-surface-container-lowest text-sm font-medium text-on-surface-variant hover:bg-surface-container-low" href="#">
+<span class="sr-only">Previous</span>
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</a>
+<a class="relative inline-flex items-center px-4 py-2 border border-outline-variant bg-primary text-sm font-medium text-on-primary" href="#">1</a>
+<a class="relative inline-flex items-center px-4 py-2 border border-outline-variant bg-surface-container-lowest text-sm font-medium text-on-surface-variant hover:bg-surface-container-low" href="#">2</a>
+<a class="relative inline-flex items-center px-4 py-2 border border-outline-variant bg-surface-container-lowest text-sm font-medium text-on-surface-variant hover:bg-surface-container-low" href="#">3</a>
+<span class="relative inline-flex items-center px-4 py-2 border border-outline-variant bg-surface-container-lowest text-sm font-medium text-on-surface-variant">...</span>
+<a class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-outline-variant bg-surface-container-lowest text-sm font-medium text-on-surface-variant hover:bg-surface-container-low" href="#">
+<span class="sr-only">Next</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RTX 4080 Super - TechHub PC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#737686",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191c1e",
+                      "surface-container": "#edeef0",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#e1e2e4",
+                      "tertiary-container": "#656d84",
+                      "surface-container-high": "#e7e8ea",
+                      "on-tertiary-fixed": "#131b2e",
+                      "tertiary": "#4d556b",
+                      "secondary-fixed-dim": "#ffb690",
+                      "inverse-primary": "#b4c5ff",
+                      "on-tertiary-fixed-variant": "#3f465c",
+                      "inverse-surface": "#2e3132",
+                      "primary": "#004ac6",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-container-low": "#f3f4f6",
+                      "primary-container": "#2563eb",
+                      "on-primary-container": "#eeefff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#d9dadc",
+                      "on-surface": "#191c1e",
+                      "on-secondary-fixed-variant": "#783200",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-tint": "#0053db",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#00174b",
+                      "secondary-container": "#fd761a",
+                      "tertiary-fixed-dim": "#bec6e0",
+                      "surface-bright": "#f8f9fb",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#341100",
+                      "surface": "#f8f9fb",
+                      "primary-fixed": "#dbe1ff",
+                      "on-tertiary-container": "#eef0ff",
+                      "outline-variant": "#c3c6d7",
+                      "on-surface-variant": "#434655",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#5c2400",
+                      "tertiary-fixed": "#dae2fd",
+                      "secondary": "#9d4300",
+                      "inverse-on-surface": "#f0f1f3",
+                      "surface-container-highest": "#e1e2e4",
+                      "secondary-fixed": "#ffdbca",
+                      "background": "#f8f9fb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "xl": "80px",
+                      "xs": "4px",
+                      "lg": "48px",
+                      "md": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Be Vietnam Pro"],
+                      "label-md": ["Be Vietnam Pro"],
+                      "headline-sm": ["Be Vietnam Pro"],
+                      "headline-xl": ["Be Vietnam Pro"],
+                      "headline-lg": ["Be Vietnam Pro"],
+                      "headline-md": ["Be Vietnam Pro"],
+                      "body-sm": ["Be Vietnam Pro"],
+                      "body-md": ["Be Vietnam Pro"],
+                      "headline-lg-mobile": ["Be Vietnam Pro"],
+                      "label-lg": ["Be Vietnam Pro"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-high flex flex-col w-full z-50 max-w-container-max mx-auto px-gutter docked full-width top-0 bg-surface-container-low dark:bg-surface-container-highest shadow-sm">
+<div class="flex items-center justify-between py-sm">
+<div class="flex items-center gap-md">
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary" href="#">TechHub PC</a>
+</div>
+<div class="flex-1 max-w-lg mx-md">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-sm text-outline-variant">search</span>
+<input class="w-full pl-xl pr-sm py-2 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest text-on-surface text-body-md font-body-md" placeholder="Tìm kiếm sản phẩm..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<nav class="hidden lg:flex items-center gap-sm">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium text-label-md font-label-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Hotline</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium text-label-md font-label-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Store Locations</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium text-label-md font-label-md hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Order Tracking</a>
+</nav>
+<div class="flex items-center gap-xs">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors hover:scale-95 duration-150">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors hover:scale-95 duration-150">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors hover:scale-95 duration-150">
+<span class="material-symbols-outlined">compare_arrows</span>
+</button>
+</div>
+<a class="hidden md:block text-label-md font-label-md text-primary font-bold" href="#">Login/Register</a>
+</div>
+</div>
+</header>
+<div class="flex flex-1 max-w-container-max mx-auto w-full px-margin-mobile md:px-gutter">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col w-64 flex-shrink-0 bg-surface dark:bg-surface-dim border-r border-outline-variant dark:border-outline mr-md py-md">
+<div class="mb-lg px-md">
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">TechHub PC</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Premium Hardware Store</p>
+</div>
+<nav class="flex flex-col gap-xs">
+<!-- Assuming this is a product page, none are strictly 'active' in the main intent sense, but let's highlight VGA/GPU as it's an RTX 4080 Super -->
+<a class="flex items-center gap-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">memory</span>
+<span class="text-label-lg font-label-lg">CPU</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">developer_board</span>
+<span class="text-label-lg font-label-lg">Mainboard</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">memory_alt</span>
+<span class="text-label-lg font-label-lg">RAM</span>
+</a>
+<a class="flex items-center gap-sm bg-primary-container text-on-primary-container font-bold rounded-lg px-4 py-3 mx-2 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">videogame_asset</span>
+<span class="text-label-lg font-label-lg">VGA/GPU</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">sd_storage</span>
+<span class="text-label-lg font-label-lg">SSD</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">hard_drive</span>
+<span class="text-label-lg font-label-lg">HDD</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">power</span>
+<span class="text-label-lg font-label-lg">PSU</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">downloading</span>
+<span class="text-label-lg font-label-lg">Case</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">monitor</span>
+<span class="text-label-lg font-label-lg">Màn hình</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high rounded-lg px-4 py-3 mx-2 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">keyboard</span>
+<span class="text-label-lg font-label-lg">Phụ kiện</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 py-lg min-w-0">
+<!-- Product Section (Bento-ish layout) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg mb-xl">
+<!-- Left: Image Gallery -->
+<div class="md:col-span-7 flex flex-col gap-sm">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-md flex items-center justify-center aspect-[4/3] shadow-sm">
+<img class="object-contain w-full h-full" data-alt="A highly detailed, professional product studio shot of a massive, premium high-end graphics card (RTX 4080 Super). The GPU features a sleek dark metallic cooler with glowing bright blue LED accents. It rests on a clean, stark white background under bright, diffused light-mode studio lighting that highlights every fin of the heatsink and the precision engineering of the fans. High contrast, sharp focus, technical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAmb9W6uLorXXGGHXdc9Rrv5twNEQ-FoluJrlazU5KLCrZR-bzSHdv3cZNd03uUv9ridJzNimdmC3-cW8vTPSuDtur2FjTy5419mUwZKnLpk-yv2MKm4nF7I83fXSPMsYM1jOsvSY0Gky8Hfk5VkMazKaa38Y0HmV3-taZiWyahDEgm_UVbAznS8UjaLJsBlSH51hOfHYGu8OXvldW3g59D3royhLvBcwGa31FrDZv36rRBh4Qjh2dfA"/>
+</div>
+<div class="grid grid-cols-4 gap-sm">
+<div class="bg-surface-container-lowest rounded-lg border-2 border-primary p-xs aspect-square cursor-pointer">
+<img class="object-cover w-full h-full rounded" data-alt="A highly detailed close-up shot of the massive cooling fans on a high-end graphics card, showing the geometric precision of the fan blades and metallic shroud. Bright, crisp white studio lighting, technical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2rY4T914TGDf7sTnq6wFPgKxQFS8I1pXg3EUbQ-34BNHDzI6foO2FHJbQ1Pn6eAOJYzbBZYDTkYSuNCM6F6xFmzFNvgXmIrAVHGv1dm2NJ_0BV4wbTs9AxFS7LYpRRHYBrcIzOd5HMMg2nVRcInFYkOVwCTl86K0owLPgGDbt_wEkiObqqRu374tXEMW05SkEgLtrQJFDexRlzb4q_JAYFShw-_jVhViwCVWm7iDgyUoC-36rSWODAw"/>
+</div>
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-xs aspect-square cursor-pointer hover:border-primary/50 transition-colors">
+<img class="object-cover w-full h-full rounded" data-alt="A highly detailed angle shot of the I/O shield of a high-end graphics card, showing DisplayPort and HDMI connectors. The metallic bracket shines under bright white studio lighting, conveying premium build quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQZsH9A6pbfzeVzIz80_h0Lj4lsUmMNpL0E16Vf8Fo9tjzIfKDbeAImlDGRY415GtoKidLLtrFU_bwvTORXm9IM2g5xc4NtL-0GW4JYCCGXk7k-c1Gp5hmvLX7DHjQ_GebAvmYyrQ_pFjd1I--XsYEkSEKJ97hWrYv80sKjn-1xv9xvcj6p0ITCBjI_icgGGkbqkbrdVVgKP0EUm00MuNkVNL58YUeHMHbrMYUoK3D3llRMpiawZeLrw"/>
+</div>
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-xs aspect-square cursor-pointer hover:border-primary/50 transition-colors">
+<img class="object-cover w-full h-full rounded" data-alt="A detailed shot focusing on the illuminated branding logo on the side of a premium high-end graphics card. The glowing blue LEDs contrast sharply against the dark brushed aluminum finish. Bright studio lighting environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARtCosSMwJUeh_Kzm-q7RpXCYvVtqTPtx6rDGM3F-PSp23W9Npq-0zORneH5oazstGWOHTKvCgZ3JMQsJJu_pf3uLkrv0NEt81NY4pK-TenBavDuxi_AywxWv4fccFU5E0h6EeWCRshL5sfzlJR8K7g6RhWY15fMObj1fIixxrik7di4V9CpoXIXmD7haQX309he8JW5EQne48aaoQPKRJ8rZwKQi0nJcgzZQs5mmQCwJb__94eJcYXw"/>
+</div>
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-xs aspect-square cursor-pointer hover:border-primary/50 transition-colors">
+<img class="object-cover w-full h-full rounded" data-alt="A highly detailed shot of the exposed heat pipes and dense aluminum fin array of a premium graphics card cooler. The industrial design is highlighted by crisp, clean, bright white light-mode lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDefeQ7epCuA8zEZjJWlvS3kZjqQIBsQFPLgT-Nk2WsxY5XZJ4Vsb3PCzi85_4J7JaqJmHDhb9-f9zgPUYDOeCgyMaFOxcO-MIqTdL08_rCDs19ewxVqjQllLZCCL3N-v74sGfKTNMtRG5BtLf0pnR5eSjHH36jH0nG_pM7uTyK-0yNM9jMM5x8HtIYnhZJbNI6rjyK27c8lM0Wn0--JBwt7j2hNWVtCgTBwmDTHB7AGQFb2PF_r3Nh9A"/>
+</div>
+</div>
+</div>
+<!-- Right: Product Info -->
+<div class="md:col-span-5 flex flex-col gap-md">
+<div>
+<div class="flex items-center gap-xs mb-xs">
+<span class="bg-primary-container text-on-primary-container text-label-md font-label-md px-2 py-1 rounded-full">New</span>
+<span class="bg-error-container text-on-error-container text-label-md font-label-md px-2 py-1 rounded-full">-15%</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg md:text-headline-lg text-on-surface mb-xs">ASUS ROG Strix GeForce RTX 4080 SUPER 16GB GDDR6X</h1>
+<div class="flex items-center gap-sm">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star_half</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">(42 đánh giá)</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-md">
+<div class="text-headline-xl font-headline-xl text-primary font-bold">29.990.000 ₫</div>
+<div class="text-body-lg font-body-lg text-outline-variant line-through">35.290.000 ₫</div>
+<div class="mt-sm flex items-center gap-xs text-primary font-medium text-body-md font-body-md">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                            Còn hàng (Sẵn sàng giao)
+                        </div>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="text-label-lg font-label-lg text-on-surface">Số lượng</label>
+<div class="flex items-center gap-md">
+<div class="flex items-center border border-outline-variant rounded-lg bg-surface-container-lowest">
+<button class="px-sm py-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">remove</span></button>
+<input class="w-16 text-center border-none bg-transparent focus:ring-0 text-body-lg font-body-lg p-0" max="5" min="1" type="number" value="1"/>
+<button class="px-sm py-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">add</span></button>
+</div>
+<button class="flex-1 bg-primary text-on-primary text-headline-sm font-headline-sm py-3 rounded-lg hover:bg-on-primary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined">shopping_cart</span>
+                                Thêm vào giỏ
+                            </button>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 pt-md mt-sm">
+<ul class="text-body-md font-body-md text-on-surface-variant space-y-2">
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-primary text-sm mt-1">verified_user</span> Bảo hành chính hãng 36 tháng</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-primary text-sm mt-1">local_shipping</span> Miễn phí giao hàng toàn quốc</li>
+<li class="flex items-start gap-xs"><span class="material-symbols-outlined text-primary text-sm mt-1">currency_exchange</span> Đổi trả trong 15 ngày nếu lỗi nhà sản xuất</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Tabs Section -->
+<div class="mb-xl">
+<div class="flex border-b border-outline-variant/50 mb-md gap-md">
+<button class="text-headline-md font-headline-md font-bold text-primary border-b-2 border-primary pb-xs px-xs">Thông số kỹ thuật</button>
+<button class="text-headline-md font-headline-md font-medium text-on-surface-variant hover:text-on-surface pb-xs px-xs transition-colors">Mô tả sản phẩm</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Specs Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden">
+<table class="w-full text-left border-collapse">
+<tbody class="text-body-md font-body-md">
+<tr class="bg-surface-container-low border-b border-outline-variant/20">
+<th class="py-sm px-md font-medium text-on-surface w-1/3">Nhà sản xuất</th>
+<td class="py-sm px-md text-on-surface-variant">ASUS</td>
+</tr>
+<tr class="border-b border-outline-variant/20">
+<th class="py-sm px-md font-medium text-on-surface w-1/3">GPU</th>
+<td class="py-sm px-md text-on-surface-variant">NVIDIA GeForce RTX 4080 SUPER</td>
+</tr>
+<tr class="bg-surface-container-low border-b border-outline-variant/20">
+<th class="py-sm px-md font-medium text-on-surface w-1/3">Bộ nhớ</th>
+<td class="py-sm px-md text-on-surface-variant">16GB GDDR6X</td>
+</tr>
+<tr class="border-b border-outline-variant/20">
+<th class="py-sm px-md font-medium text-on-surface w-1/3">Bus bộ nhớ</th>
+<td class="py-sm px-md text-on-surface-variant">256-bit</td>
+</tr>
+<tr class="bg-surface-container-low border-b border-outline-variant/20">
+<th class="py-sm px-md font-medium text-on-surface w-1/3">Cổng giao tiếp</th>
+<td class="py-sm px-md text-on-surface-variant">2x HDMI 2.1a, 3x DisplayPort 1.4a</td>
+</tr>
+<tr>
+<th class="py-sm px-md font-medium text-on-surface w-1/3">Nguồn đề xuất</th>
+<td class="py-sm px-md text-on-surface-variant">850W</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Quick description snippet -->
+<div class="text-body-md font-body-md text-on-surface-variant space-y-sm">
+<p>Trang bị sức mạnh vượt trội từ kiến trúc NVIDIA Ada Lovelace, ASUS ROG Strix GeForce RTX 4080 SUPER mang đến trải nghiệm gaming và sáng tạo không giới hạn.</p>
+<p>Hệ thống tản nhiệt được nâng cấp với quạt Axial-tech lớn hơn, buồng hơi (vapor chamber) được thiết kế lại tối ưu luồng khí, đảm bảo nhiệt độ luôn lý tưởng ngay cả khi tải nặng.</p>
+<p>Thiết kế khung kim loại chắc chắn cùng dải đèn ARGB tùy chỉnh qua Aura Sync tạo nên vẻ ngoài đậm chất game thủ, phù hợp cho mọi bộ PC cao cấp.</p>
+</div>
+</div>
+</div>
+<!-- Similar Products Grid -->
+<div class="mb-xl">
+<h3 class="text-headline-lg font-headline-lg text-on-surface mb-md">Sản phẩm tương tự</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<!-- Product Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-sm shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col">
+<div class="aspect-square bg-surface rounded-lg mb-sm flex items-center justify-center p-sm">
+<img class="object-contain w-full h-full" data-alt="A detailed product studio shot of a high-end graphics card (RTX 4070 Ti Super). Sleek triple-fan cooler design, dark gray metallic shroud, crisp white studio lighting, clean tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgNeM98xZVJOMxxrer4lnruGtufmBd1xhWiLA3XxaQH1ljlu83AEWp20UzCXxJQ2ElTyT_z4oeUsAPAygf5YkVSMevVKu5b2xYhFSBcqGOQCSWCdRtPRl78d7F43eh0ImvIQ2mblCF8-UTHHQbYYZk0KvXV397_nVK7rrPP0Vr5cOGmLsX7Jylnbp06IQ03YDgs7Shb8eP1xcBq003antN_1yw3s9kMz_Q3tooLXeWf_EDAaV-nlMv1g"/>
+</div>
+<div class="flex-1">
+<h4 class="text-body-md font-body-md text-on-surface font-medium line-clamp-2">GIGABYTE GeForce RTX 4070 Ti SUPER GAMING OC 16G</h4>
+<div class="mt-xs text-headline-sm font-headline-sm text-primary">23.590.000 ₫</div>
+</div>
+</div>
+<!-- Product Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-sm shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col">
+<div class="aspect-square bg-surface rounded-lg mb-sm flex items-center justify-center p-sm">
+<img class="object-contain w-full h-full" data-alt="A detailed product studio shot of a massive premium graphics card (RTX 4090). Massive heatsink, white metallic shroud with RGB accents, crisp bright studio lighting, professional e-commerce photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqnPqI_4isCK4t6ojlcpoUkCf_1aTJex0b5jzmhCzVDr-n-weBJ3UmKXfs8ZPvppMOmLn5-qvFm1XgZKexF4yhatGhlqdznzuMI40zDSp4xeRBX7pjiEIhyGd5wDZWcXXPIvfTkK8jGNYSaLelLAIyrfOvZz5IKtCZ5f9Y12OxHzsXBhxm5IyK2qTpefooklJgAm6-kbkzqnGsLXdyEGJ8IgoL3GLBlda9ncDIO4aUpFlnw63e9ylXgA"/>
+</div>
+<div class="flex-1">
+<h4 class="text-body-md font-body-md text-on-surface font-medium line-clamp-2">MSI GeForce RTX 4090 SUPRIM X 24G</h4>
+<div class="mt-xs text-headline-sm font-headline-sm text-primary">55.990.000 ₫</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container w-full py-lg px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between border-t border-outline-variant dark:border-outline">
+<div class="mb-md md:mb-0 flex flex-col gap-sm">
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">TechHub PC</h2>
+<p class="text-body-sm font-body-sm text-on-surface dark:text-on-surface-variant">© 2024 TechHub PC. Tất cả quyền được bảo lưu.</p>
+</div>
+<nav class="flex flex-wrap gap-md items-center">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Chính sách bảo hành</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Hướng dẫn thanh toán</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Tuyển dụng</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Vận chuyển</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-secondary underline transition-all opacity-80 hover:opacity-100" href="#">Liên hệ</a>
+</nav>
+</footer>
+</body></html>

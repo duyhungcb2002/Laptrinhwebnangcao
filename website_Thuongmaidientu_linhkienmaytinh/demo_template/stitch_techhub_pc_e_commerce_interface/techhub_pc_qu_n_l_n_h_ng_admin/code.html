@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quản lý đơn hàng - TechHub PC Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#737686",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1e",
+                        "surface-container": "#edeef0",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e2e4",
+                        "tertiary-container": "#656d84",
+                        "surface-container-high": "#e7e8ea",
+                        "on-tertiary-fixed": "#131b2e",
+                        "tertiary": "#4d556b",
+                        "secondary-fixed-dim": "#ffb690",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#2e3132",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-low": "#f3f4f6",
+                        "primary-container": "#2563eb",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d9dadc",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#783200",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#0053db",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-container": "#fd761a",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-bright": "#f8f9fb",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#341100",
+                        "surface": "#f8f9fb",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-container": "#eef0ff",
+                        "outline-variant": "#c3c6d7",
+                        "on-surface-variant": "#434655",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#5c2400",
+                        "tertiary-fixed": "#dae2fd",
+                        "secondary": "#9d4300",
+                        "inverse-on-surface": "#f0f1f3",
+                        "surface-container-highest": "#e1e2e4",
+                        "secondary-fixed": "#ffdbca",
+                        "background": "#f8f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-sm": ["Be Vietnam Pro"],
+                        "headline-xl": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "body-sm": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Be Vietnam Pro"],
+                        "label-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        [data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-full py-md bg-surface border-r border-outline-variant w-64 z-40">
+<div class="px-md mb-lg">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">TechHub PC</h1>
+<p class="text-body-sm text-on-surface-variant mt-xs">Premium Hardware Store</p>
+</div>
+<div class="flex-1 overflow-y-auto space-y-1 px-sm">
+<a class="flex items-center space-x-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg px-4 py-3 mx-2 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-lg font-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center space-x-sm bg-primary-container text-on-primary-container font-bold rounded-lg px-4 py-3 mx-2 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-lg font-label-lg">Đơn hàng</span>
+</a>
+<a class="flex items-center space-x-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg px-4 py-3 mx-2 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-lg font-label-lg">Sản phẩm</span>
+</a>
+<a class="flex items-center space-x-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg px-4 py-3 mx-2 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-lg font-label-lg">Khách hàng</span>
+</a>
+<a class="flex items-center space-x-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-lg px-4 py-3 mx-2 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-lg font-label-lg">Cài đặt</span>
+</a>
+</div>
+<div class="p-md mt-auto">
+<button class="flex items-center space-x-sm w-full text-on-surface-variant hover:bg-surface-container-highest rounded-lg px-4 py-3 transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-lg font-label-lg">Đăng xuất</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-64 flex flex-col h-screen overflow-hidden">
+<!-- Top App Bar (Mobile) -->
+<header class="lg:hidden flex items-center justify-between p-md bg-surface border-b border-outline-variant">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">TechHub PC</h1>
+<button class="p-2 text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="flex-1 overflow-y-auto p-md lg:p-lg">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg space-y-4 md:space-y-0">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-background">Quản lý đơn hàng</h2>
+<p class="text-body-md text-on-surface-variant mt-1">Theo dõi và xử lý các đơn đặt hàng mới nhất.</p>
+</div>
+<div class="flex space-x-sm">
+<button class="flex items-center px-4 py-2 bg-surface-container-high text-on-surface rounded-lg border border-outline-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined mr-2">download</span>
+                            Xuất báo cáo
+                        </button>
+</div>
+</div>
+<!-- Filters -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-sm mb-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-sm">
+<div class="col-span-1 md:col-span-2">
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Tìm kiếm</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Nhập mã đơn, tên khách hàng..." type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Trạng thái</label>
+<select class="w-full px-4 py-2 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors">
+<option value="">Tất cả</option>
+<option value="pending">Chờ xác nhận</option>
+<option value="preparing">Đang chuẩn bị</option>
+<option value="shipping">Đang giao</option>
+<option value="completed">Hoàn thành</option>
+<option value="cancelled">Đã hủy</option>
+</select>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-1">Thời gian</label>
+<select class="w-full px-4 py-2 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors">
+<option value="today">Hôm nay</option>
+<option value="week">Tuần này</option>
+<option value="month">Tháng này</option>
+<option value="custom">Tùy chỉnh...</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-md py-3 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Mã đơn</th>
+<th class="px-md py-3 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Khách hàng</th>
+<th class="px-md py-3 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Ngày đặt</th>
+<th class="px-md py-3 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider text-right">Tổng tiền</th>
+<th class="px-md py-3 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider text-center">Trạng thái</th>
+<th class="px-md py-3 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors" onclick="openPanel('ORD-2401')">
+<td class="px-md py-4 font-label-md text-primary">#ORD-2401</td>
+<td class="px-md py-4">
+<div class="font-label-md text-on-surface">Nguyễn Văn A</div>
+<div class="text-label-md text-on-surface-variant">0901234567</div>
+</td>
+<td class="px-md py-4 text-body-sm text-on-surface">15/10/2023 09:30</td>
+<td class="px-md py-4 text-body-md font-label-lg text-right">45,500,000 ₫</td>
+<td class="px-md py-4 text-center">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-label-md font-label-md bg-secondary-fixed text-on-secondary-fixed">
+                                            Chờ xác nhận
+                                        </span>
+</td>
+<td class="px-md py-4 text-right">
+<button aria-label="Chi tiết" class="text-primary hover:text-primary-container p-2">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low cursor-pointer transition-colors" onclick="openPanel('ORD-2400')">
+<td class="px-md py-4 font-label-md text-primary">#ORD-2400</td>
+<td class="px-md py-4">
+<div class="font-label-md text-on-surface">Trần Thị B</div>
+<div class="text-label-md text-on-surface-variant">0987654321</div>
+</td>
+<td class="px-md py-4 text-body-sm text-on-surface">14/10/2023 14:15</td>
+<td class="px-md py-4 text-body-md font-label-lg text-right">12,990,000 ₫</td>
+<td class="px-md py-4 text-center">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-label-md font-label-md bg-tertiary-fixed text-on-tertiary-fixed">
+                                            Đang chuẩn bị
+                                        </span>
+</td>
+<td class="px-md py-4 text-right">
+<button aria-label="Chi tiết" class="text-primary hover:text-primary-container p-2">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant flex items-center justify-between bg-surface-container-lowest">
+<span class="text-body-sm text-on-surface-variant">Hiển thị 1-10 của 150 đơn hàng</span>
+<div class="flex space-x-2">
+<button class="p-1 rounded border border-outline-variant text-on-surface disabled:opacity-50" disabled=""><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="px-3 py-1 rounded bg-primary text-on-primary font-label-md">1</button>
+<button class="px-3 py-1 rounded hover:bg-surface-container-high text-on-surface font-label-md">2</button>
+<button class="px-3 py-1 rounded hover:bg-surface-container-high text-on-surface font-label-md">3</button>
+<button class="p-1 rounded border border-outline-variant text-on-surface hover:bg-surface-container-high"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Side Panel (Order Details) - Hidden by default -->
+<div class="fixed inset-0 bg-on-background/20 z-50 hidden transition-opacity" id="order-panel-overlay" onclick="closePanel()"></div>
+<div class="fixed top-0 right-0 h-full w-full max-w-md bg-surface-container-lowest shadow-xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col border-l border-outline-variant" id="order-panel">
+<div class="flex items-center justify-between p-md border-b border-outline-variant bg-surface">
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Chi tiết đơn hàng</h3>
+<p class="text-label-md font-label-md text-primary mt-1" id="panel-order-id">#ORD-0000</p>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-on-surface rounded-full hover:bg-surface-container-high" onclick="closePanel()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-md space-y-lg">
+<!-- Status Update -->
+<div class="bg-surface p-4 rounded-lg border border-outline-variant">
+<h4 class="text-label-lg font-label-lg text-on-surface mb-3">Cập nhật trạng thái</h4>
+<div class="flex gap-2">
+<select class="flex-1 px-3 py-2 bg-surface-container-lowest rounded-md border border-outline-variant focus:border-primary outline-none">
+<option selected="" value="pending">Chờ xác nhận</option>
+<option value="preparing">Đang chuẩn bị</option>
+<option value="shipping">Đang giao</option>
+<option value="completed">Hoàn thành</option>
+<option value="cancelled">Đã hủy</option>
+</select>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-md font-label-md hover:bg-primary-container transition-colors">Lưu</button>
+</div>
+</div>
+<!-- Customer Info -->
+<div>
+<h4 class="text-label-lg font-label-lg text-on-surface border-b border-outline-variant pb-2 mb-3">Thông tin khách hàng</h4>
+<div class="space-y-2 text-body-sm">
+<p class="flex justify-between"><span class="text-on-surface-variant">Tên:</span> <span class="font-medium">Nguyễn Văn A</span></p>
+<p class="flex justify-between"><span class="text-on-surface-variant">Điện thoại:</span> <span>0901234567</span></p>
+<p class="flex justify-between"><span class="text-on-surface-variant">Địa chỉ:</span> <span class="text-right">123 Đường ABC, Quận 1,<br/>TP. Hồ Chí Minh</span></p>
+</div>
+</div>
+<!-- Order Items -->
+<div>
+<h4 class="text-label-lg font-label-lg text-on-surface border-b border-outline-variant pb-2 mb-3">Sản phẩm</h4>
+<ul class="space-y-3">
+<li class="flex gap-3">
+<div class="w-16 h-16 bg-surface-container rounded-md flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">dns</span>
+</div>
+<div class="flex-1">
+<p class="text-body-sm font-medium line-clamp-2">Intel Core i9-14900K 6GHz 24 Cores</p>
+<div class="flex justify-between mt-1 text-label-md">
+<span class="text-on-surface-variant">SL: 1</span>
+<span class="font-medium text-primary">15,000,000 ₫</span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<!-- Summary -->
+<div>
+<h4 class="text-label-lg font-label-lg text-on-surface border-b border-outline-variant pb-2 mb-3">Thanh toán</h4>
+<div class="space-y-2 text-body-sm">
+<p class="flex justify-between"><span class="text-on-surface-variant">Tạm tính:</span> <span>15,000,000 ₫</span></p>
+<p class="flex justify-between"><span class="text-on-surface-variant">Phí giao hàng:</span> <span>50,000 ₫</span></p>
+<p class="flex justify-between text-body-md font-bold pt-2 border-t border-outline-variant mt-2"><span class="text-on-surface">Tổng cộng:</span> <span class="text-primary">15,050,000 ₫</span></p>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function openPanel(orderId) {
+            document.getElementById('panel-order-id').innerText = '#' + orderId;
+            document.getElementById('order-panel-overlay').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('order-panel').classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closePanel() {
+            document.getElementById('order-panel').classList.add('translate-x-full');
+            setTimeout(() => {
+                document.getElementById('order-panel-overlay').classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body></html>
