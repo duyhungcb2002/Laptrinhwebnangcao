@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { useApp } from '../../context/AppContext';
 
 export default function RegisterPage() {
-  const { register } = useApp();
+  const { register } = useAuth();
+  const { showToast } = useApp();
   const navigate = useNavigate();
 
   const [name, setName] = useState('');
@@ -11,8 +13,9 @@ export default function RegisterPage() {
   const [password, setPassword] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
 
@@ -22,7 +25,12 @@ export default function RegisterPage() {
     }
 
     if (password.length < 8) {
-      setErrorMessage('Mật khẩu phải có độ dài tối thiểu từ 8 ký tự trở lên.');
+      setErrorMessage('Mật khẩu phải có độ dài tối thiểu từ 8 ký tự.');
+      return;
+    }
+
+    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password) || !/[\W_]/.test(password)) {
+      setErrorMessage('Mật khẩu phải bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt (VD: StrongPassword@123).');
       return;
     }
 
@@ -31,8 +39,12 @@ export default function RegisterPage() {
       return;
     }
 
-    const res = register(name.trim(), email.trim(), password);
+    setIsLoading(true);
+    const res = await register(name.trim(), email.trim(), password);
+    setIsLoading(false);
+
     if (res.success) {
+      showToast('Đăng ký tài khoản thành công!', 'success');
       navigate('/');
     } else {
       setErrorMessage(res.message || 'Đăng ký không thành công.');
@@ -83,12 +95,12 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Mật khẩu (Tối thiểu 8 ký tự) *</label>
+            <label className="block text-xs font-bold text-slate-700 mb-1">Mật khẩu (Gồm chữ hoa, thường, số, ký tự đặc biệt) *</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
+              placeholder="StrongPassword@123"
               className="w-full p-3 border border-slate-300 rounded-xl text-xs outline-none focus:border-blue-600 transition-colors"
               required
             />
@@ -108,9 +120,17 @@ export default function RegisterPage() {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs shadow-md hover:shadow-blue-500/25 transition-all"
+            disabled={isLoading}
+            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold py-3 rounded-xl text-xs shadow-md hover:shadow-blue-500/25 transition-all flex items-center justify-center gap-2"
           >
-            Đăng Ký Tài Khoản
+            {isLoading ? (
+              <>
+                <span className="material-symbols-outlined animate-spin text-sm">progress_activity</span>
+                <span>Đang xử lý đăng ký...</span>
+              </>
+            ) : (
+              <span>Đăng Ký Tài Khoản</span>
+            )}
           </button>
         </form>
 

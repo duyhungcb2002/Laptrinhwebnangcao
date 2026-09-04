@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
+import { useAuth } from '../../context/AuthContext';
 
 export default function Header() {
-  const { cart, currentUser, logout } = useApp();
+  const { cart } = useApp();
+  const { user: currentUser, isAdmin, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
@@ -77,7 +79,7 @@ export default function Header() {
           </Link>
 
           {/* Admin shortcut if Admin role */}
-          {currentUser && currentUser.role === 'Admin' && (
+          {currentUser && isAdmin && (
             <Link
               to="/admin"
               className="hidden sm:flex items-center gap-1 bg-purple-50 text-purple-700 hover:bg-purple-100 font-bold px-2.5 py-1 rounded-lg text-xs border border-purple-200"
@@ -95,16 +97,16 @@ export default function Header() {
                 className="flex items-center gap-1.5 p-1 rounded-lg hover:bg-slate-100 transition-colors text-slate-700 border border-slate-200"
               >
                 <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
-                  {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'U'}
+                  {currentUser.fullName ? currentUser.fullName.charAt(0).toUpperCase() : 'U'}
                 </div>
-                <span className="hidden xl:inline text-xs font-semibold max-w-[90px] truncate">{currentUser.name}</span>
+                <span className="hidden xl:inline text-xs font-semibold max-w-[90px] truncate">{currentUser.fullName}</span>
                 <span className="material-symbols-outlined text-sm">expand_more</span>
               </button>
 
               {userDropdownOpen && (
                 <div className="absolute right-0 top-full mt-2 w-52 bg-white border border-slate-200 rounded-xl shadow-2xl py-2 z-50 divide-y divide-slate-100 animate-fadeIn">
                   <div className="px-4 py-2">
-                    <p className="text-xs font-bold text-slate-900 truncate">{currentUser.name}</p>
+                    <p className="text-xs font-bold text-slate-900 truncate">{currentUser.fullName}</p>
                     <p className="text-[11px] text-slate-500 truncate">{currentUser.email}</p>
                   </div>
                   <div className="py-1 text-xs">
@@ -192,12 +194,12 @@ export default function Header() {
             {currentUser ? (
               <>
                 <Link to="/account/profile" onClick={() => setMobileMenuOpen(false)} className="p-2.5 rounded-lg hover:bg-slate-100 flex items-center gap-2 text-slate-800">
-                  <span className="material-symbols-outlined text-lg text-blue-600">person</span> Hồ sơ cá nhân ({currentUser.name})
+                  <span className="material-symbols-outlined text-lg text-blue-600">person</span> Hồ sơ cá nhân ({currentUser.fullName})
                 </Link>
                 <Link to="/account/orders" onClick={() => setMobileMenuOpen(false)} className="p-2.5 rounded-lg hover:bg-slate-100 flex items-center gap-2 text-slate-800">
                   <span className="material-symbols-outlined text-lg text-blue-600">receipt_long</span> Đơn hàng của tôi
                 </Link>
-                {currentUser.role === 'Admin' && (
+                {isAdmin && (
                   <Link to="/admin" onClick={() => setMobileMenuOpen(false)} className="p-2.5 rounded-lg bg-purple-50 text-purple-700 flex items-center gap-2 font-bold">
                     <span className="material-symbols-outlined text-lg">admin_panel_settings</span> Trang Quản Trị Admin
                   </Link>
