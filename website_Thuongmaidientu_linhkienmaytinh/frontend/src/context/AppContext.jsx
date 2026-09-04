@@ -34,18 +34,6 @@ export function AppProvider({ children }) {
     return saved ? JSON.parse(saved) : INITIAL_REVIEWS;
   });
 
-  // Default currentUser is null when unauthenticated
-  const [currentUser, setCurrentUser] = useState(() => {
-    const saved = localStorage.getItem('techhub_user');
-    if (!saved) return null;
-    const parsed = JSON.parse(saved);
-    if (parsed && parsed.email === 'khachhang@techhub.vn') {
-      localStorage.removeItem('techhub_user');
-      return null;
-    }
-    return parsed;
-  });
-
   // UI state
   const [toast, setToast] = useState(null);
   const [confirmModal, setConfirmModal] = useState(null);
@@ -57,13 +45,6 @@ export function AppProvider({ children }) {
   useEffect(() => { localStorage.setItem('techhub_orders', JSON.stringify(orders)); }, [orders]);
   useEffect(() => { localStorage.setItem('techhub_users', JSON.stringify(users)); }, [users]);
   useEffect(() => { localStorage.setItem('techhub_reviews', JSON.stringify(reviews)); }, [reviews]);
-  useEffect(() => {
-    if (currentUser) {
-      localStorage.setItem('techhub_user', JSON.stringify(currentUser));
-    } else {
-      localStorage.removeItem('techhub_user');
-    }
-  }, [currentUser]);
 
   // Toast Helper
   const showToast = (message, type = 'success') => {
@@ -183,7 +164,6 @@ export function AppProvider({ children }) {
       ...orderData
     };
 
-    // Deduct stock for ordered items
     setProducts(prevProducts => prevProducts.map(p => {
       const orderedItem = orderData.items.find(item => item.id === p.id);
       if (orderedItem) {
@@ -205,105 +185,24 @@ export function AppProvider({ children }) {
 
   // User Actions
   const toggleUserStatus = (userId) => {
-    if (currentUser && currentUser.id === userId) {
-      showToast('Không thể khóa tài khoản chính bạn đang đăng nhập!', 'error');
-      return;
-    }
-
     setUsers(prevUsers => {
-      const updated = prevUsers.map(u => {
+      return prevUsers.map(u => {
         if (u.id === userId) {
           const newStatus = u.status === 'Active' ? 'Blocked' : 'Active';
           return { ...u, status: newStatus };
         }
         return u;
       });
-      return updated;
     });
-
     showToast('Cập nhật trạng thái người dùng thành công!', 'success');
   };
 
-  const updateProfile = (updatedData) => {
-    if (currentUser) {
-      const newUserData = { ...currentUser, ...updatedData };
-      setCurrentUser(newUserData);
-      setUsers(prev => prev.map(u => u.email === currentUser.email ? newUserData : u));
-      showToast('Đã cập nhật hồ sơ cá nhân thành công!', 'success');
-    }
-  };
-
-  // Auth actions
-  const login = (email, password) => {
-    if (email === 'admin@techhub.vn' && password === 'Admin@123') {
-      const adminObj = { id: 'USR-1', name: 'Admin TechHub', email: 'admin@techhub.vn', role: 'Admin', status: 'Active' };
-      setCurrentUser(adminObj);
-      showToast('Đăng nhập hệ thống Quản trị viên thành công!', 'success');
-      return { success: true, role: 'Admin' };
-    }
-
-    if (email === 'user@gmail.com' && password === 'User@123') {
-      const customerObj = { id: 'USR-2', name: 'Nguyễn Văn Hùng', email: 'user@gmail.com', role: 'Customer', status: 'Active' };
-      setCurrentUser(customerObj);
-      showToast('Đăng nhập tài khoản thành công!', 'success');
-      return { success: true, role: 'Customer' };
-    }
-
-    // Check existing users in state
-    const foundUser = users.find(u => u.email.toLowerCase() === email.toLowerCase());
-    if (foundUser) {
-      if (foundUser.status === 'Blocked') {
-        showToast('Tài khoản của bạn đã bị khóa. Vui lòng liên hệ Admin.', 'error');
-        return { success: false, message: 'Tài khoản đã bị khóa' };
-      }
-      setCurrentUser(foundUser);
-      showToast('Đăng nhập tài khoản thành công!', 'success');
-      return { success: true, role: foundUser.role };
-    }
-
-    showToast('Email hoặc mật khẩu không chính xác!', 'error');
-    return { success: false, message: 'Sai email hoặc mật khẩu' };
-  };
-
-  const logout = () => {
-    setCurrentUser(null);
-    localStorage.removeItem('techhub_user');
-    showToast('Đã đăng xuất tài khoản', 'info');
-  };
-
-  const register = (name, email, password) => {
-    const existing = users.find(u => u.email.toLowerCase() === email.toLowerCase());
-    if (existing) {
-      showToast('Email này đã được đăng ký trên hệ thống!', 'error');
-      return { success: false, message: 'Email đã tồn tại' };
-    }
-
-    const newUser = {
-      id: `USR-${Date.now()}`,
-      name,
-      email,
-      role: 'Customer',
-      status: 'Active',
-      joinedDate: new Date().toISOString().substring(0, 10)
-    };
-
-    setUsers(prev => [...prev, newUser]);
-    setCurrentUser(newUser);
-    showToast('Đăng ký tài khoản thành công!', 'success');
-    return { success: true };
-  };
-
   // Reviews
-  const addReview = (productId, comment, rating) => {
-    if (!currentUser) {
-      showToast('Vui lòng đăng nhập để gửi đánh giá!', 'error');
-      return;
-    }
-
+  const addReview = (productId, comment, rating, userName = 'Khách hàng') => {
     const newRev = {
       id: `REV-${Date.now()}`,
       productId,
-      userName: currentUser.name || 'Khách hàng',
+      userName,
       rating: Number(rating),
       comment,
       date: new Date().toISOString().substring(0, 10)
@@ -321,11 +220,11 @@ export function AppProvider({ children }) {
 
   return (
     <AppContext.Provider value={{
-      products, categories, cart, orders, users, reviews, currentUser, toast, confirmModal,
+      products, categories, cart, orders, users, reviews, toast, confirmModal,
       addToCart, removeFromCart, updateCartQty, clearCart,
       saveProduct, deleteProduct, saveCategory, deleteCategory,
-      createOrder, updateOrderStatus, toggleUserStatus, updateProfile,
-      login, logout, register, addReview, deleteReview,
+      createOrder, updateOrderStatus, toggleUserStatus,
+      addReview, deleteReview,
       showToast, confirmAction, setToast, setConfirmModal
     }}>
       {children}

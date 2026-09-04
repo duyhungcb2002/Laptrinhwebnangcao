@@ -1,11 +1,16 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 
 export default function ProtectedRoute() {
-  const { currentUser } = useApp();
+  const { isAuthenticated, isInitializing } = useAuth();
 
-  if (!currentUser) {
+  if (isInitializing) {
+    return <LoadingSpinner text="Đang xác thực hệ thống..." />;
+  }
+
+  if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 

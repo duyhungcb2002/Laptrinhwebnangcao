@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { useApp } from '../../context/AppContext';
 
 export default function LoginPage() {
-  const { login } = useApp();
+  const { login } = useAuth();
+  const { showToast } = useApp();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
 
@@ -19,9 +22,14 @@ export default function LoginPage() {
       return;
     }
 
-    const res = login(email.trim(), password.trim());
+    setIsLoading(true);
+    const res = await login(email.trim(), password.trim());
+    setIsLoading(false);
+
     if (res.success) {
-      if (res.role === 'Admin') {
+      showToast('Đăng nhập tài khoản thành công!', 'success');
+      const isAdminUser = res.user?.roles?.includes('Admin') || res.user?.permissions?.includes('admin.access');
+      if (isAdminUser) {
         navigate('/admin');
       } else {
         navigate('/');
@@ -74,23 +82,19 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Demo Accounts Card */}
-          <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-slate-700 text-xs space-y-1.5">
-            <p className="font-bold text-slate-900 flex items-center gap-1">
-              <span className="material-symbols-outlined text-sm text-blue-600">info</span>
-              <span>Tài khoản thử nghiệm hệ thống:</span>
-            </p>
-            <div className="space-y-1 text-[11px]">
-              <p>• <strong>Quản trị viên (Admin):</strong> <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200">admin@techhub.vn</code> / Mật khẩu: <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200">Admin@123</code></p>
-              <p>• <strong>Khách hàng (Customer):</strong> <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200">user@gmail.com</code> / Mật khẩu: <code className="font-mono bg-white px-1.5 py-0.5 rounded border border-slate-200">User@123</code></p>
-            </div>
-          </div>
-
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs shadow-md hover:shadow-blue-500/25 transition-all"
+            disabled={isLoading}
+            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold py-3 rounded-xl text-xs shadow-md hover:shadow-blue-500/25 transition-all flex items-center justify-center gap-2"
           >
-            Đăng Nhập
+            {isLoading ? (
+              <>
+                <span className="material-symbols-outlined animate-spin text-sm">progress_activity</span>
+                <span>Đang đăng nhập...</span>
+              </>
+            ) : (
+              <span>Đăng Nhập</span>
+            )}
           </button>
         </form>
 
