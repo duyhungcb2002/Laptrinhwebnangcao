@@ -12,7 +12,7 @@ export default function Header() {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  const totalItems = cart ? cart.reduce((sum, item) => sum + item.qty, 0) : 0;
+  const totalItems = cart?.totalQuantity ?? (Array.isArray(cart) ? cart.reduce((sum, item) => sum + item.qty, 0) : 0);
 
   // Auto-close dropdown when clicking outside
   useEffect(() => {

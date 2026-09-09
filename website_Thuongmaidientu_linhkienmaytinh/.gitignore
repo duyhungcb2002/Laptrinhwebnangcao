@@ -50,3 +50,13 @@ website_Thuongmaidientu_linhkienmaytinh/demo_template/
 ~$*.docx
 ~$*.xlsx
 ~$*.pptx
+
+# Testing & Security
+TestResults/
+coverage/
+*.trx
+/pass.txt
+secrets.json
+**/secrets.json
+uploads/
+**/uploads/

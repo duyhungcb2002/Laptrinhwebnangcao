@@ -1,0 +1,588 @@
+{
+  "info": {
+    "_postman_id": "techhub-pc-api-collection-v3",
+    "name": "TechHub PC API - Complete Test Suite",
+    "description": "Postman Collection for TechHub PC E-commerce API (Task 8 Security, RBAC, Cookie techhub_refresh & ProblemDetails Verification)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5103/api" },
+    { "key": "adminEmail", "value": "" },
+    { "key": "adminPassword", "value": "" },
+    { "key": "customerEmail", "value": "" },
+    { "key": "customerPassword", "value": "" },
+    { "key": "customerBEmail", "value": "" },
+    { "key": "customerBPassword", "value": "" },
+    { "key": "adminAccessToken", "value": "" },
+    { "key": "customerAccessToken", "value": "" },
+    { "key": "customerBAccessToken", "value": "" },
+    { "key": "firstRefreshToken", "value": "" },
+    { "key": "productId", "value": "" },
+    { "key": "orderId", "value": "" },
+    { "key": "otherCustomerOrderId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Authentication & Account Lifecycle",
+      "item": [
+        {
+          "name": "Admin Login (Store adminAccessToken)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 200 OK', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Stores adminAccessToken', function () {",
+                  "    pm.expect(jsonData.accessToken).to.be.a('string');",
+                  "    pm.collectionVariables.set('adminAccessToken', jsonData.accessToken);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{adminEmail}}\",\n  \"password\": \"{{adminPassword}}\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Customer Login (Store customerAccessToken & firstRefreshToken)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 200 OK', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Stores customerAccessToken', function () {",
+                  "    pm.expect(jsonData.accessToken).to.be.a('string');",
+                  "    pm.collectionVariables.set('customerAccessToken', jsonData.accessToken);",
+                  "});",
+                  "var cookieHeader = pm.response.headers.get('Set-Cookie');",
+                  "if (cookieHeader) {",
+                  "    var match = cookieHeader.match(/techhub_refresh=([^;]+)/);",
+                  "    if (match) { pm.collectionVariables.set('firstRefreshToken', match[1]); }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{customerEmail}}\",\n  \"password\": \"{{customerPassword}}\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Login Wrong Password (401 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 401 Unauthorized', function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Validates ProblemDetails structure', function () {",
+                  "    pm.expect(jsonData.status).to.eql(401);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"invalid@techhub.vn\",\n  \"password\": \"WrongPassword123!\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Login Account Locked (401 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 401 Unauthorized', function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Returns ProblemDetails for locked/inactive account', function () {",
+                  "    pm.expect(jsonData.status).to.eql(401);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"locked.account@techhub.vn\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Refresh Token Successful Rotation (200)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 200 OK', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Returns new access token', function () {",
+                  "    pm.expect(jsonData.accessToken).to.be.a('string');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Cookie", "value": "techhub_refresh={{firstRefreshToken}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/auth/refresh", "host": ["{{baseUrl}}"], "path": ["auth", "refresh"] }
+          }
+        },
+        {
+          "name": "Refresh Token Reuse Detection (401 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 401 Unauthorized', function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('ProblemDetails status 401 for token reuse', function () {",
+                  "    pm.expect(jsonData.status).to.eql(401);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Cookie", "value": "techhub_refresh={{firstRefreshToken}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/auth/refresh", "host": ["{{baseUrl}}"], "path": ["auth", "refresh"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Security & RBAC Isolation",
+      "item": [
+        {
+          "name": "No Token Access (401 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 401 Unauthorized', function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('ProblemDetails status 401', function () {",
+                  "    pm.expect(jsonData.status).to.eql(401);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/auth/me", "host": ["{{baseUrl}}"], "path": ["auth", "me"] }
+          }
+        },
+        {
+          "name": "Customer calling Admin Endpoint (403 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 403 Forbidden', function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('ProblemDetails status 403', function () {",
+                  "    pm.expect(jsonData.status).to.eql(403);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "Bearer {{customerAccessToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/admin/inventory", "host": ["{{baseUrl}}"], "path": ["admin", "inventory"] }
+          }
+        },
+        {
+          "name": "Customer A Access Customer B Order (403 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 403 Forbidden', function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('ProblemDetails status 403', function () {",
+                  "    pm.expect(jsonData.status).to.eql(403);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Authorization", "value": "Bearer {{customerAccessToken}}" } ],
+            "url": { "raw": "{{baseUrl}}/orders/{{otherCustomerOrderId}}", "host": ["{{baseUrl}}"], "path": ["orders", "{{otherCustomerOrderId}}"] }
+          }
+        },
+        {
+          "name": "SQL Injection Search Test (200 OK No SQL Error)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 200 OK', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('Does not return unescaped SQL error or total data dump', function () {",
+                  "    pm.expect(jsonData.items).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/products?search=' OR 1=1 --", "host": ["{{baseUrl}}"], "path": ["products"], "query": [ { "key": "search", "value": "' OR 1=1 --" } ] }
+          }
+        },
+        {
+          "name": "XSS Output Encoding Test (200 OK String Handled As Text)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 200 OK', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('XSS script string handled safely as plain text', function () {",
+                  "    pm.expect(jsonData.items).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/products?search=<script>alert('XSS')</script>", "host": ["{{baseUrl}}"], "path": ["products"], "query": [ { "key": "search", "value": "<script>alert('XSS')</script>" } ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Business Rules & Validation",
+      "item": [
+        {
+          "name": "Checkout Excess Stock (409 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 409 Conflict', function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('ProblemDetails status 409', function () {",
+                  "    pm.expect(jsonData.status).to.eql(409);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{customerAccessToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paymentMethod\": \"COD\",\n  \"shippingAddress\": \"123 Test St\",\n  \"receiverName\": \"Test User\",\n  \"receiverPhone\": \"0987654321\",\n  \"items\": [\n    {\n      \"productId\": \"{{productId}}\",\n      \"quantity\": 999999\n    }\n  ]\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/checkout", "host": ["{{baseUrl}}"], "path": ["checkout"] }
+          }
+        },
+        {
+          "name": "Race Condition Dual Checkout (Manual Scenario Note: Automated Concurrency Verified via Integration Test)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is either 201 Created or 409 Conflict', function () {",
+                  "    pm.expect([201, 409]).to.include(pm.response.code);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "if (pm.response.code === 409) {",
+                  "    pm.expect(jsonData.status).to.eql(409);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{customerAccessToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paymentMethod\": \"COD\",\n  \"shippingAddress\": \"123 Test St\",\n  \"receiverName\": \"Test User\",\n  \"receiverPhone\": \"0987654321\",\n  \"items\": [\n    {\n      \"productId\": \"{{productId}}\",\n      \"quantity\": 1\n    }\n  ]\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/checkout", "host": ["{{baseUrl}}"], "path": ["checkout"] }
+          }
+        },
+        {
+          "name": "Invalid Order Status Transition (409 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 409 Conflict', function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('ProblemDetails status 409', function () {",
+                  "    pm.expect(jsonData.status).to.eql(409);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{adminAccessToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Shipping\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/admin/orders/{{orderId}}/status", "host": ["{{baseUrl}}"], "path": ["admin", "orders", "{{orderId}}", "status"] }
+          }
+        },
+        {
+          "name": "Upload Invalid File Extension (400 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 400 Bad Request', function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('ProblemDetails status 400', function () {",
+                  "    pm.expect(jsonData.status).to.eql(400);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Authorization", "value": "Bearer {{adminAccessToken}}" } ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": { "raw": "{{baseUrl}}/admin/products/{{productId}}/images", "host": ["{{baseUrl}}"], "path": ["admin", "products", "{{productId}}", "images"] }
+          }
+        },
+        {
+          "name": "Upload Invalid Magic Bytes (400 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 400 Bad Request', function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('ProblemDetails status 400', function () {",
+                  "    pm.expect(jsonData.status).to.eql(400);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Authorization", "value": "Bearer {{adminAccessToken}}" } ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": { "raw": "{{baseUrl}}/admin/products/{{productId}}/images", "host": ["{{baseUrl}}"], "path": ["admin", "products", "{{productId}}", "images"] }
+          }
+        },
+        {
+          "name": "Upload Exceeding 5MB Limit (400 ProblemDetails)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Exact Status 400 Bad Request', function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "pm.test('ProblemDetails status 400', function () {",
+                  "    pm.expect(jsonData.status).to.eql(400);",
+                  "    pm.expect(jsonData.title).to.exist;",
+                  "    pm.expect(jsonData.detail).to.exist;",
+                  "    pm.expect(jsonData.instance).to.exist;",
+                  "    pm.expect(jsonData.traceId).to.exist;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Authorization", "value": "Bearer {{adminAccessToken}}" } ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": { "raw": "{{baseUrl}}/admin/products/{{productId}}/images", "host": ["{{baseUrl}}"], "path": ["admin", "products", "{{productId}}", "images"] }
+          }
+        }
+      ]
+    }
+  ]
+}

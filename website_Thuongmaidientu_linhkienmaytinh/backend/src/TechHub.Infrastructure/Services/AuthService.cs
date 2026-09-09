@@ -159,7 +159,7 @@ public class AuthService : IAuthService
 
         if (!user.IsActive)
         {
-            throw new ForbiddenAccessException("User account is locked.");
+            throw new UnauthorizedAccessException("User account is inactive.");
         }
 
         var (roles, permissions) = await GetUserRolesAndPermissionsAsync(user.Id, ct);

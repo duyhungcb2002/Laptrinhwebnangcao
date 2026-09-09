@@ -26,10 +26,10 @@ public class TokenService : ITokenService
 
         var claims = new List<Claim>
         {
+            new(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new(JwtRegisteredClaimNames.Email, user.Email),
-            new(JwtRegisteredClaimNames.Name, user.FullName),
+            new(ClaimTypes.Email, user.Email),
+            new(ClaimTypes.Name, user.FullName),
             new("email", user.Email),
             new("name", user.FullName)
         };
@@ -51,11 +51,11 @@ public class TokenService : ITokenService
         var now = DateTime.UtcNow;
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(claims),
+            Subject = new ClaimsIdentity(claims, "Jwt"),
             Issuer = issuer,
             Audience = audience,
             IssuedAt = now,
-            NotBefore = now,
+            NotBefore = now.AddSeconds(-5),
             Expires = now.AddMinutes(expirationMinutes),
             SigningCredentials = credentials
         };
