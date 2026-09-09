@@ -13,6 +13,16 @@ using TechHub.Infrastructure.Persistence.Seeder;
 
 var builder = WebApplication.CreateBuilder(args);
 
+if (builder.Environment.IsEnvironment("Testing"))
+{
+    var testSettingsPath = Path.Combine(AppContext.BaseDirectory, "appsettings.Test.json");
+    if (File.Exists(testSettingsPath))
+    {
+        builder.Configuration.AddJsonFile(testSettingsPath, optional: true);
+    }
+    builder.Configuration.AddUserSecrets<Program>(optional: true);
+}
+
 // Add Controllers
 builder.Services.AddControllers();
 
@@ -63,7 +73,7 @@ builder.Services.AddCors(options =>
 });
 
 // Add Infrastructure Services & AppDbContext
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration, builder.Environment);
 
 // Add JWT Authentication
 var keyBytes = TechHub.Infrastructure.Security.JwtKeyValidator.GetValidatedKeyBytes(builder.Configuration);
@@ -88,7 +98,6 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true,
         ClockSkew = TimeSpan.Zero
     };
-
     options.Events = new JwtBearerEvents
     {
         OnChallenge = async context =>
@@ -97,34 +106,36 @@ builder.Services.AddAuthentication(options =>
             context.Response.StatusCode = StatusCodes.Status401Unauthorized;
             context.Response.ContentType = "application/problem+json";
 
-            var problem = new ProblemDetails
+            var traceId = System.Diagnostics.Activity.Current?.Id ?? context.HttpContext.TraceIdentifier;
+            var problemDetails = new ProblemDetails
             {
-                Type = "https://tools.ietf.org/html/rfc7235#section-3.1",
-                Title = "Unauthorized",
                 Status = StatusCodes.Status401Unauthorized,
-                Detail = "Authentication is required to access this resource.",
-                Instance = context.Request.Path
+                Title = "Unauthorized",
+                Detail = context.ErrorDescription ?? "Authentication token is missing, invalid, or expired.",
+                Instance = context.Request.Path,
+                Type = "https://tools.ietf.org/html/rfc7235#section-3.1"
             };
+            problemDetails.Extensions["traceId"] = traceId;
 
-            problem.Extensions["traceId"] = context.HttpContext.TraceIdentifier;
-            await context.Response.WriteAsync(JsonSerializer.Serialize(problem));
+            await context.Response.WriteAsJsonAsync(problemDetails, options: (System.Text.Json.JsonSerializerOptions?)null, contentType: "application/problem+json");
         },
         OnForbidden = async context =>
         {
             context.Response.StatusCode = StatusCodes.Status403Forbidden;
             context.Response.ContentType = "application/problem+json";
 
-            var problem = new ProblemDetails
+            var traceId = System.Diagnostics.Activity.Current?.Id ?? context.HttpContext.TraceIdentifier;
+            var problemDetails = new ProblemDetails
             {
-                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.3",
-                Title = "Forbidden",
                 Status = StatusCodes.Status403Forbidden,
-                Detail = "You do not have permission to perform this action.",
-                Instance = context.Request.Path
+                Title = "Forbidden",
+                Detail = "You do not have permission to access this resource.",
+                Instance = context.Request.Path,
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.3"
             };
+            problemDetails.Extensions["traceId"] = traceId;
 
-            problem.Extensions["traceId"] = context.HttpContext.TraceIdentifier;
-            await context.Response.WriteAsync(JsonSerializer.Serialize(problem));
+            await context.Response.WriteAsJsonAsync(problemDetails, options: (System.Text.Json.JsonSerializerOptions?)null, contentType: "application/problem+json");
         }
     };
 });
@@ -152,6 +163,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("Frontend");
+app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -188,3 +200,5 @@ app.MapHealthChecks("/health", new HealthCheckOptions
 });
 
 app.Run();
+
+public partial class Program { }

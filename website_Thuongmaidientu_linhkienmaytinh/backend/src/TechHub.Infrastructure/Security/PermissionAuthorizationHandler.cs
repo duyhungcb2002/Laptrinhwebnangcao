@@ -9,7 +9,7 @@ public class PermissionAuthorizationHandler : AuthorizationHandler<PermissionReq
         PermissionRequirement requirement)
     {
         var hasPermission = context.User.Claims.Any(c =>
-            c.Type == "permission" && c.Value.Equals(requirement.Permission, StringComparison.OrdinalIgnoreCase));
+            (c.Type == "permission" || c.Type.EndsWith("/permission")) && c.Value.Equals(requirement.Permission, StringComparison.OrdinalIgnoreCase));
 
         if (hasPermission)
         {

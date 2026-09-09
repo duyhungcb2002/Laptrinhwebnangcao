@@ -38,3 +38,6 @@ demo_template/
 ~$*.docx
 ~$*.xlsx
 ~$*.pptx
+
+# Sensitive Files
+/pass.txt

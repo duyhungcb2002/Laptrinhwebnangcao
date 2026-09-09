@@ -18,12 +18,14 @@ public class PermissionPolicyProvider : IAuthorizationPolicyProvider
         {
             var permission = policyName["Permission:".Length..];
             var policy = new AuthorizationPolicyBuilder();
+            policy.RequireAuthenticatedUser();
             policy.AddRequirements(new PermissionRequirement(permission));
             return Task.FromResult<AuthorizationPolicy?>(policy.Build());
         }
 
         // Direct permission code policy name
         var customPolicy = new AuthorizationPolicyBuilder();
+        customPolicy.RequireAuthenticatedUser();
         customPolicy.AddRequirements(new PermissionRequirement(policyName));
         return Task.FromResult<AuthorizationPolicy?>(customPolicy.Build());
     }
